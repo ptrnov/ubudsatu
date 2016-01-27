@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\front\controllers;
+namespace ubud\front\controllers;
 
 use Yii;
 use yii\web\Controller;

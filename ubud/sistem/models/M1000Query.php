@@ -1,5 +1,5 @@
 <?php
-namespace crm\sistem\models;
+namespace ubud\sistem\models;
 /**
  * This is the ActiveQuery class for [[M1000]].
  *

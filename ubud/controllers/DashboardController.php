@@ -1,6 +1,6 @@
 <?php
 
-namespace lukisongroup\controllers;
+namespace ubud\controllers;
 
 use Yii;
 use yii\filters\AccessControl;

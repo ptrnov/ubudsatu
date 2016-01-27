@@ -8,14 +8,12 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use kartik\icons\Icon;
 use dmstr\widgets\Alert;
-use crm\sistem\models\UserloginSearch;
-use crm\sistem\models\M1000;			
-//use lukisongroup\assets\AppAsset;
+use ubud\sistem\models\UserloginSearch;
+use ubud\sistem\models\M1000;			
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Modal;
-//AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
-use lukisongroup\assets\AppAsset_style;
+use ubud\assets\AppAsset_style;
 AppAsset_style::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -84,10 +82,10 @@ AppAsset_style::register($this);
                     <header class="main-header">
                         <a  class="logo bg-red">
                             <?php
-                            //echo Html::img('http://lukisongroup.com/favicon.ico', ['width'=>'20']);
+                            //echo Html::img('http://ubud.com/favicon.ico', ['width'=>'20']);
                             ?>
                             <!-- LOGO -->
-                            CRM LukisonGroup
+                            Ubud-Satu
                         </a>
                            <!--  <div class="navbar-custom-menu">!-->
                                 <?php
@@ -157,7 +155,7 @@ AppAsset_style::register($this);
                                         if ($this->sideCorp != '') {
                                             echo $this->sideCorp;
                                         }else{
-                                            echo 'PT. Lukison Group';
+                                            echo 'RT/RW Dashboard';
                                         };
                                     ?>
                                  </p>

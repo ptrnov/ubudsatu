@@ -1,5 +1,5 @@
 <?php
-use crm\sistem\models\Userlogin;
+use ubud\sistem\models\Userlogin;
 /*
  * Login Dashboard user Permission
  * login user account berdasarkan POSITION_LOGIN
@@ -13,7 +13,7 @@ use crm\sistem\models\Userlogin;
 */
 
 /* $model = Userlogin::findOne(Yii::$app->user->identity->id); */
- $model=Yii::$app->getUserOptcrm->Profile_user();
+ $model=Yii::$app->getUserOptubud->Profile_user();
  //print_r($model);
 if (count($model)<>0){
 	//$Val_Corp='none'

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace lukisongroup\assets;
+namespace ubud\assets;
 
 use yii\web\AssetBundle;
 
@@ -31,7 +31,7 @@ class AppAssetOrg1 extends AssetBundle
 		//'angular/chartorg/orgchart1/src/js/jquery.js',	
     ];
     //public $depends = [
-    //    'lukisongroup\assets\AngularAsset',
+    //    'ubud\assets\AngularAsset',
 	//	'yii\bootstrap\BootstrapAsset',
     //];
 	//public $jsOptions = [

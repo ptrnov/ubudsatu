@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace lukisongroup\assets;
+namespace ubud\assets;
 
 use yii\web\AssetBundle;
 
@@ -30,7 +30,7 @@ class AppAssetChating extends AssetBundle
 		'angular/chating/src/scripts/index.js',      
     ];
     public $depends = [
-        'lukisongroup\assets\AngularAsset',
+        'ubud\assets\AngularAsset',
     ];
 }
 	

@@ -1,6 +1,6 @@
 <?php
 
-namespace crm\sistem\models;
+namespace ubud\sistem\models;
 
 use Yii;
 
@@ -40,7 +40,7 @@ class Userprofile extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{dbm_086.user_profile}}';
+        return '{{user_profile}}';
     }
 
     /**
@@ -48,7 +48,7 @@ class Userprofile extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('db1');
+        return Yii::$app->get('db');
     }
 
     /**

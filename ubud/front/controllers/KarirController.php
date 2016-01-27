@@ -1,6 +1,6 @@
 <?php
 
-namespace crm\front\controllers;
+namespace ubud\front\controllers;
 
 use yii\web\Controller;
 

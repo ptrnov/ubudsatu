@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace lukisongroup\assets;
+namespace ubud\assets;
 
 use yii\web\AssetBundle;
 
@@ -47,7 +47,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
 		//'yii\bootstrap\BootstrapAsset',
-        'lukisongroup\assets\AngularAsset',
+        'ubud\assets\AngularAsset',
     ];
 }
 	

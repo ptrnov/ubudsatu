@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace lukisongroup\assets;
+namespace ubud\assets;
 
 use yii\web\AssetBundle;
 
@@ -33,7 +33,7 @@ class AppAssetOrg extends AssetBundle
 		'angular/app/ChartOrg.js'
     ];
     public $depends = [
-        'lukisongroup\assets\AngularAsset',
+        'ubud\assets\AngularAsset',
     ];
 }
 	

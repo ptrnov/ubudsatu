@@ -6,7 +6,7 @@ use yii\bootstrap\NavBar;
 use kartik\helpers\Html;
 use yii\bootstrap\Carousel;
 use yii\bootstrap\Modal;
-use lukisongroup\assets\AppAsset_front;
+use ubud\assets\AppAsset_front;
 AppAsset_front::register($this);
 ?>
 
@@ -27,10 +27,10 @@ AppAsset_front::register($this);
 						<div class="navbar navbar-inverse navbar-fixed-top headroom" ></div>
 						<?php
 						NavBar::begin([
-							//'brandLabel' => '<img src="http://lukisongroup.com/logo.png" class="navbar-fixed-top" style="width:120px; height:90px; margin-left:80px; margin-top:10px"/>'.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
-							'brandLabel' => '<img src="http://lukisongroup.com/logo.png" class="navbar-fixed-top" style="width:150px; height:112px; margin-left:50px; margin-top:10px"/>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>CRM Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
+							//'brandLabel' => '<img src="http://ubud.com/logo.png" class="navbar-fixed-top" style="width:120px; height:90px; margin-left:80px; margin-top:10px"/>'.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
+							'brandLabel' => '<img src="http://ubud.com/logo.png" class="navbar-fixed-top" style="width:150px; height:112px; margin-left:50px; margin-top:10px"/>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>CRM Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
 								
-							//'<div style="margin-left:50px"><img src="http://lukisongroup.com/favicon.ico"/>LukisonGroup</div>',
+							//'<div style="margin-left:50px"><img src="http://ubud.com/favicon.ico"/>LukisonGroup</div>',
 							//'brandUrl' => Yii::$app->homeUrl,
 							'options' => [
 								   'class' =>  'navbar navbar-inverse navbar-fixed-top headroom',

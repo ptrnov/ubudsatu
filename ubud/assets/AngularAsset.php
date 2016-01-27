@@ -1,5 +1,5 @@
 <?php
-namespace lukisongroup\assets;
+namespace ubud\assets;
 
 use yii\web\AssetBundle;
 use yii\web\View;

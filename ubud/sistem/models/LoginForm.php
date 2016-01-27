@@ -1,5 +1,5 @@
 <?php
-namespace crm\sistem\models;
+namespace ubud\sistem\models;
 
 use Yii;
 use yii\base\Model;

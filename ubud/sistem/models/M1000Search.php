@@ -1,9 +1,9 @@
 <?php
-namespace crm\sistem\models;
+namespace ubud\sistem\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use crm\sistem\models\M1000;
+use ubud\sistem\models\M1000;
 /**
  * M1000Search represents the model behind the search form about `lukisongroup\models\system\M1000`.
  */

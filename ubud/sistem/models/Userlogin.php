@@ -1,11 +1,11 @@
 <?php
 
-namespace crm\sistem\models;
-use crm\sistem\models\Employe;     // Data Employe CRM -> jika POSITION SITE='CRM'
-use crm\sistem\models\Userprofile;
-//use crm\models\hrd\Employe_crm;
+namespace ubud\sistem\models;
+use ubud\sistem\models\Employe;     // Data Employe CRM -> jika POSITION SITE='CRM'
+use ubud\sistem\models\Userprofile;
+//use ubud\models\hrd\Employe_ubud;
 //use lukisongroup\models\hrd\Employe; // Date Employe ERP    jika POSITION SITE<>'CRM'
-//use crm\sistem\models;
+//use ubud\sistem\models;
 use kartik\builder\Form;
 use Yii;
 
@@ -15,13 +15,12 @@ class Userlogin extends \yii\db\ActiveRecord
 	 public static function getDb()
 	{
 		/* Author -ptr.nov- : HRD | Dashboard I */
-		return \Yii::$app->db_user;  
+		return \Yii::$app->db;  
 	}
 	
     public static function tableName()
     {
-        //return '{{dbm_086.user}}';
-        return '{{dbm001.user}}';
+        return '{{user}}';
     }
 
     public function rules()

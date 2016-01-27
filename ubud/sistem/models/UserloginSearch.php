@@ -6,7 +6,7 @@
  * Author: -ptr.nov-
 */
 
-namespace crm\sistem\models;
+namespace ubud\sistem\models;
 
 use Yii;
 use yii\base\Model;
@@ -75,7 +75,7 @@ class UserloginSearch extends Userlogin
     {
 		$model = Userlogin::find()->select('*')
 				->joinWith('userprofile',true,'LEFT JOIN')
-				->Where(['dbm001.user.id' => $id]);
+				->Where(['user.id' => $id]);
 				//->one();
 		if ($model !== null) {
             return $model;
