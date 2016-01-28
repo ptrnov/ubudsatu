@@ -12,15 +12,15 @@ AppAsset_front::register($this);
 
 <?php $this->beginBody('class="home"'); ?>  
 		
-			<div class="container ">
+			<div class="container">
 				
 				<?php
 					// echo  \yii\helpers\Json::encode($menuItems);
 					if (Yii::$app->user->isGuest) {
 						//$menuItemsNoLogin[] = ['label' => '<a data-toggle="modal" data-target="#modal" style="cursor: pointer">Click me gently!</a>' , 'url'=> ['/site/login5']];
 						$menuItemsNoLogin[] = ['label' =>'Home', 'url' => ['/site/index']];						
-						$menuItemsNoLogin[] = ['label' => 'Product', 'url' => ['/front/product/index']];
-						$menuItemsNoLogin[] = ['label' => 'Karir', 'url' => ['/front/karir/index']];
+						$menuItemsNoLogin[] = ['label' => 'Struktur', 'url' => ['/front/struktur/index']];
+						$menuItemsNoLogin[] = ['label' => 'Galery', 'url' => ['/front/galeri/index']];
 						$menuItemsNoLogin[] = ['label' => 'Contact Us', 'url' => ['/front/contact/index']];
 						$menuItemsNoLogin[] = ['label' => '<div class="btn">LOGIN</div>', 'url' => ['/site/login'],];
 						?>

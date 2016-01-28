@@ -1,14 +1,14 @@
 <?php
 
-namespace ubud\sistem\controllers;
+namespace ubud\front\controllers;
 
 use yii\web\Controller;
 
-class ProfileController extends Controller
+class GaleriController extends Controller
 {
-    public function actionIndex($id)
+    public function actionIndex()
     {
-		if($id=='lg'){
+		/* if($id=='lg'){
 			$corp="PT. Lukison Group";
 		}elseif ($id=='sss'){
 			$corp="PT. Sarana Sinar Surya";
@@ -16,9 +16,7 @@ class ProfileController extends Controller
 			$corp="PT. Effembi Sukses Makmur";
 		}elseif ($id=='alg'){
 			$corp="PT. Artha Lipat Ganda";
-		}		
-        return $this->render('index',[
-			'corp_nm'=>$corp
-		]);
+		}*/		
+        return $this->render('index'); 
     }
 }

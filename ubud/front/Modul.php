@@ -1,10 +1,10 @@
 <?php
 
-namespace crm\front;
+namespace ubud\front;
 
 class Modul extends \yii\base\Module
 {
-    public $controllerNamespace = 'crm\front\controllers';
+    public $controllerNamespace = 'ubud\front\controllers';
 
     public function init()
     {

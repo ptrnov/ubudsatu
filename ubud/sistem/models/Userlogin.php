@@ -1,11 +1,7 @@
 <?php
 
 namespace ubud\sistem\models;
-use ubud\sistem\models\Employe;     // Data Employe CRM -> jika POSITION SITE='CRM'
 use ubud\sistem\models\Userprofile;
-//use ubud\models\hrd\Employe_ubud;
-//use lukisongroup\models\hrd\Employe; // Date Employe ERP    jika POSITION SITE<>'CRM'
-//use ubud\sistem\models;
 use kartik\builder\Form;
 use Yii;
 

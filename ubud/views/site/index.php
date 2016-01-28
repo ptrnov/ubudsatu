@@ -17,18 +17,16 @@ use ubud\sistem\models\Userlogin;
  //print_r($model);
 if (count($model)<>0){
 	//$Val_Corp='none'
-	if($model->POSITION_LOGIN==1){
-		include('_index_salesman.php');		
+	if($model->POSITION_LOGIN==0){
+		include('_index_rw.php');		
+	}elseif($model->POSITION_LOGIN==1){
+		include('_index_rt1.php');
 	}elseif($model->POSITION_LOGIN==2){
-		include('_index_salespromo.php');
+		include('_index_rt2.php');
 	}elseif($model->POSITION_LOGIN==3){
-		include('_index_customer.php');
+		include('_index_rt3.php');
 	}elseif($model->POSITION_LOGIN==4){
-		include('_index_distributor.php');
-	}elseif($model->POSITION_LOGIN==5){
-		include('_index_factory.php');
-	}elseif($model->POSITION_LOGIN==6){
-		include('_index_outsource.php');
+		include('_index_rt4.php');
 	}
 }
 

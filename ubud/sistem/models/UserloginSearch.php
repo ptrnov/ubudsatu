@@ -60,12 +60,6 @@ class UserloginSearch extends Userlogin
         return $dataProvider_Userlogin;
     }
 	
-	public function attributes()
-	{
-		/*Author -ptr.nov- add related fields to searchable attributes */
-		//return array_merge(parent::attributes(), ['emp.EMP_IMG','emp.EMP_NM','emp.EMP_NM_BLK','Mdlpermission.ID']);
-	}
-	
 	/** 
 	  * findUserAttr User and Employe
 	  * @author ptrnov  <piter@lukison.com>

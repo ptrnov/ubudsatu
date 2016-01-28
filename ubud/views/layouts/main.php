@@ -71,6 +71,7 @@ AppAsset_style::register($this);
 		
 		<! - NOT LOGIN- Author : -ptr.nov- >
 		<?php if (Yii::$app->user->isGuest) { ?>
+		
 			<?php include('_front.php');?>
 		<?php }; ?>
 

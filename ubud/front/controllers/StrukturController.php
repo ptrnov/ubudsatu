@@ -1,12 +1,12 @@
 <?php
 
-namespace ubud\sistem\controllers;
+namespace ubud\front\controllers;
 
 use yii\web\Controller;
 
-class ProfileController extends Controller
+class StrukturController extends Controller
 {
-    public function actionIndex($id)
+    /* public function actionIndex($id)
     {
 		if($id=='lg'){
 			$corp="PT. Lukison Group";
@@ -19,6 +19,11 @@ class ProfileController extends Controller
 		}		
         return $this->render('index',[
 			'corp_nm'=>$corp
-		]);
-    }
+		]); 	
+    } */
+	
+	public function actionIndex(){
+		return $this->render('index');
+	}
+	
 }

@@ -21,7 +21,7 @@ class AppAsset_front extends AssetBundle
 		'addasset/front/css/bootstrap.min.css',
 		'addasset/front/css/bootstrap-theme.css',
 		'addasset/front/css/font-awesome.min.css',	
-		'addasset/front/css/style.css',		
+		//'addasset/front/css/style.css',		
         //'addasset/front/css/bootstrap.css', //Jangan Digunakan Block semua js
 		//'addasset/front/css/font-awesome.css',
 		//'addasset/front/css/stylefront.css',
