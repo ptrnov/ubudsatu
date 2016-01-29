@@ -9,7 +9,7 @@ $this->title = 'ubud-satu.com';
 	      <div class="container">
 			<div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">UBUD-SATU</h4>
+                    <h4 class="page-head-line">RW 011, UBUD-SATU</h4>
                 </div>
             </div>		
 			<div class="row">
