@@ -18,6 +18,7 @@ AppAsset_front::register($this);
 					// echo  \yii\helpers\Json::encode($menuItems);
 					if (Yii::$app->user->isGuest) {
 						//$menuItemsNoLogin[] = ['label' => '<a data-toggle="modal" data-target="#modal" style="cursor: pointer">Click me gently!</a>' , 'url'=> ['/site/login5']];
+						$menuItemsNoLogin[] = ['label' =>'', 'url' => ['#']];						
 						$menuItemsNoLogin[] = ['label' =>'Home', 'url' => ['/site/index']];						
 						$menuItemsNoLogin[] = ['label' => 'Struktur', 'url' => ['/front/struktur/index']];
 						$menuItemsNoLogin[] = ['label' => 'Galery', 'url' => ['/front/galeri/index']];
@@ -28,7 +29,7 @@ AppAsset_front::register($this);
 						<?php
 						NavBar::begin([
 							//'brandLabel' => '<img src="http://ubud.com/logo.png" class="navbar-fixed-top" style="width:120px; height:90px; margin-left:80px; margin-top:10px"/>'.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
-							'brandLabel' => '<img src="http://ubud.com/logo.png" class="navbar-fixed-top" style="width:150px; height:112px; margin-left:50px; margin-top:10px"/>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>CRM Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
+							'brandLabel' => '<img src="http://ubudsatu.com/upload/logo/ubudsatu.png" class="navbar-fixed-top" style="width:115px; height:115px; margin-left:50px; margin-top:10px;"/>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>CRM Under Maintenance !!</h5> </div>',//.'<div class=" navbar-fixed-top pull-right" style="margin-left:20%; margin-top:10px; color:black"><h5>info@lukison.com / Support: 021888888</h5> </div>',
 								
 							//'<div style="margin-left:50px"><img src="http://ubud.com/favicon.ico"/>LukisonGroup</div>',
 							//'brandUrl' => Yii::$app->homeUrl,
