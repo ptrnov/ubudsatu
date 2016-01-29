@@ -22,7 +22,7 @@ $this->title = 'ubud-satu.com';
 			<div class="row">
                  <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="dashboard-div-wrapper bk-clr-one">
-                        <i  class="fa fa-venus dashboard-div-icon" ></i>
+                        <i  class="dashboard-div-icon" >RT01</i>
                         <div class="progress progress-striped active">
 							<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
 							</div>
@@ -32,8 +32,8 @@ $this->title = 'ubud-satu.com';
                     </div>
                 </div>
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-two">
-                        <i  class="fa fa-edit dashboard-div-icon" ></i>
+                    <div class="dashboard-div-wrapper bk-clr-two" >
+                        <i  class="dashboard-div-icon" >RT02</i>
                         <div class="progress progress-striped active">
 						  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
 						  </div>												   
@@ -43,7 +43,7 @@ $this->title = 'ubud-satu.com';
                 </div>
                  <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="dashboard-div-wrapper bk-clr-three">
-                        <i  class="fa fa-cogs dashboard-div-icon" ></i>
+                        <i  class="dashboard-div-icon" >RT03</i>
                         <div class="progress progress-striped active">
 						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
 						  </div>
@@ -54,7 +54,7 @@ $this->title = 'ubud-satu.com';
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="dashboard-div-wrapper bk-clr-four">
-                        <i  class="fa fa-bell-o dashboard-div-icon" ></i>
+                        <i  class="dashboard-div-icon" >RT04</i>
                         <div class="progress progress-striped active">
 						  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
 						  </div>

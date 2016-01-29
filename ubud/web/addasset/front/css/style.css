@@ -50,6 +50,7 @@
     width: 75px;
     border: 2px solid #fff;
     padding: 20px;
+	padding-top: 1px;
     border-radius: 50%;
     -webkit-border-radius:50%;
     -moz-border-radius:50%;
