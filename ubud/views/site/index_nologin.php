@@ -72,35 +72,32 @@ $this->title = 'ubud-satu.com';
 			  'items' => [						
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/event/event_1.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],	
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/event/event_2.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/event/event_3.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],				  
 			  ],
+			  //'options' =>[ 'style' =>'width: 100% ; height:1px;'],
 	]);
 	$carouselInformasi=Carousel::widget([
 			  'items' => [						
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/informasi/narkoba_1.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],	
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/informasi/narkoba_2.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/informasi/narkoba_3.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
-				  ],
-				  [
-					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/informasi/narkoba3.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],					  
 			  ],
 	]);
@@ -109,15 +106,15 @@ $this->title = 'ubud-satu.com';
 			  'items' => [						
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/artikel/artikel_1.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],	
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/artikel/artikel_2.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],
 				  [
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/artikel/artikel_3.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				  ],
 			  ],
 	]);
@@ -125,7 +122,7 @@ $this->title = 'ubud-satu.com';
 	$carouselKalenderRw=Carousel::widget([
 			  'items' => [						
 				  [
-					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/kalender_rw/ubudsatu.png', ['width'=>'150px','height'=>'90px']),
+					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/kalender_rw/ubudsatu.png', ['width'=>'150px','height'=>'100%']),
 					//'options' =>[ 'style' =>'width: 100% ; height: 300px;'],
 				  ],					
 			  ],
@@ -134,7 +131,7 @@ $this->title = 'ubud-satu.com';
 	$carouselKalenderRt=Carousel::widget([
 			  'items' => [						
 				  [
-					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/kalender_rt/ubudsatu.png', ['width'=>'150px','height'=>'90px']),
+					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/kalender_rt/ubudsatu.png', ['width'=>'150px','height'=>'100%']),
 					//'options' =>[ 'style' =>'width: 100% ; height: 300px;'],
 				  ],					
 			  ],
@@ -144,19 +141,19 @@ $this->title = 'ubud-satu.com';
 			  'items' => [	
 				[
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/olahraga/olahraga_1.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				],
 				[
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/olahraga/olahraga_2.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				],
 				[
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/olahraga/olahraga_3.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				],
 				[
 					'content' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/olahraga/olahraga_4.jpg', ['width'=>'100%','height'=>'100%']),
-					'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
+					//'options' =>[ 'style' =>'width: 100% ; height: 150px;'],
 				],
 				
 			  ],
@@ -167,7 +164,7 @@ $this->title = 'ubud-satu.com';
 		<h4 class="page-head-line"></h4>
 		<!-- Carausel !-->
 		<div class="row" style="padding-left:5px;padding-right:5px">
-			<div class="col-lg-4 col-md-4 col-xs-12" >
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
 						['heading' => 'Event ', 'body' =>$carouselEvent],
@@ -175,7 +172,7 @@ $this->title = 'ubud-satu.com';
 					);					
 				?>
 			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
 						['heading' => 'Informasi', 'body' =>$carouselInformasi],
@@ -183,7 +180,7 @@ $this->title = 'ubud-satu.com';
 					);					
 				?>
 			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
 						['heading' => 'Artikel', 'body' =>$carouselArtikel],
@@ -200,7 +197,7 @@ $this->title = 'ubud-satu.com';
 	</div>
 	<div class="col-md-12">
 		<div class="row" style="padding-left:5px;padding-right:5px">
-			<div class="col-lg-4 col-md-4 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
 						['heading' => 'Olahraga', 'body' =>$carouselKalenderOlahraga],
@@ -208,7 +205,7 @@ $this->title = 'ubud-satu.com';
 					);					
 				?>
 			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12" >
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
 				<?php				
 					echo Html::panel(
 						['heading' => 'Kalender RW ', 'body' =>$carouselKalenderRw],
@@ -216,7 +213,7 @@ $this->title = 'ubud-satu.com';
 					);					
 				?>
 			</div>
-			<div class="col-lg-4 col-md-4 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
 						['heading' => 'Kalender RT', 'body' =>$carouselKalenderRw],
