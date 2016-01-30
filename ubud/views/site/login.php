@@ -82,7 +82,7 @@ $formlogin= FormGrid::widget([
 <?php
     Modal::begin([
         'id' => 'modal_login',
-        'header' => '<img src="http://ubudsatu.com/upload/logo/memberlogin.png" style="width:220px; height:65px"/>'.'',
+        'header' => Html::img(Yii::$app->urlManager->baseUrl.'/upload/logo/adminLogin.png', ['width'=>'100','height'=>'70px','padding-bottom'=>'0']),
 		'size' => Modal::SIZE_SMALL,
         'options' => ['class'=>'slide'],
 		'headerOptions'=>[
