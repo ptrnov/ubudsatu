@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 use kartik\helpers\Html;
 use yii\bootstrap\Carousel;
+use yii\helpers\Url;
 
 $this->title = 'ubud-satu.com';
 ?>
@@ -158,6 +159,25 @@ $this->title = 'ubud-satu.com';
 				
 			  ],
 	]);
+	
+	$calenderRw=yii2fullcalendar\yii2fullcalendar::widget([
+	  'id'=>'rw-calender',
+      'options' => [
+        'lang' => 'id',
+        //... more options to be defined here!
+      ],
+      'ajaxEvents' => Url::to(['/timetrack/default/jsoncalendar'])
+    ]);
+	
+	$calenderRt=yii2fullcalendar\yii2fullcalendar::widget([
+	  'id'=>'rt-calender',
+      'options' => [
+        'lang' => 'id',
+        //... more options to be defined here!
+      ],
+      'ajaxEvents' => Url::to(['/timetrack/default/jsoncalendar'])
+    ]);
+
 ?>
 <div class="row">
 	<div class="col-md-12">
@@ -208,7 +228,7 @@ $this->title = 'ubud-satu.com';
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
 				<?php				
 					echo Html::panel(
-						['heading' => 'Kalender RW ', 'body' =>$carouselKalenderRw],
+						['heading' => 'Kalender RW ', 'body' =>$calenderRw],
 						Html::TYPE_DANGER
 					);					
 				?>
@@ -216,7 +236,7 @@ $this->title = 'ubud-satu.com';
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<?php				
 					echo Html::panel(
-						['heading' => 'Kalender RT', 'body' =>$carouselKalenderRw],
+						['heading' => 'Kalender RT', 'body' =>$calenderRt],
 						Html::TYPE_WARNING
 					);					
 				?>
