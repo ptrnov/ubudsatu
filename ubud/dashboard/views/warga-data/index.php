@@ -3,7 +3,7 @@
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
-use app\models\hrd\Dept;
+use yii\bootstrap\Modal;
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
@@ -96,7 +96,7 @@ use ubud\dashboard\models\Warga_dataSearch;
 		[  	//col-2
 			//Nama RT
 			'attribute' => 'ket_rt',						
-			'label'=>'Nama',
+			'label'=>'Keterangan',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -137,7 +137,7 @@ use ubud\dashboard\models\Warga_dataSearch;
 					'heading'=>'<h3 class="panel-title">DATA WARGA</h3>',
 					'type'=>'warning',
 					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Add KK',
-							['modelClass' => 'Kategori',]),'/dashboard/data-warga/create',[
+							['modelClass' => 'Data-warga',]),'/dashboard/warga-data/create',[
 								'data-toggle'=>"modal",
 									'data-target'=>"#modal-create",
 										'class' => 'btn btn-success'
@@ -166,16 +166,28 @@ use ubud\dashboard\models\Warga_dataSearch;
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
+	$this->registerJs("
+		 $.fn.modal.Constructor.prototype.enforceFocus = function(){};
+		 $('#modal-create').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget)
+			var modal = $(this)
+			var title = button.data('title')
+			var href = button.attr('href')
+			//modal.find('.modal-title').html(title)
+			modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+			$.post(href)
+				.done(function( data ) {
+					modal.find('.modal-body').html(data)
+				});
+			})
+	",$this::POS_READY);
+    Modal::begin([
+        'id' => 'modal-create',
+		'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">Tambah Data Warga</h4></div>',
+		'headerOptions'=>[
+				'style'=> 'border-radius:5px; background-color: rgba(97, 211, 96, 0.3)',
+		],
+    ]);
+    Modal::end();
+?>

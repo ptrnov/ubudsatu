@@ -3,14 +3,18 @@
 namespace ubud\dashboard\controllers;
 
 use Yii;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\helpers\Url;
+use yii\widgets\Pjax;
+use yii\web\Response;
+
 use ubud\dashboard\models\Rt;
 use ubud\dashboard\models\RtSearch;
 use ubud\dashboard\models\Warga_data;
 use ubud\dashboard\models\Warga_dataSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-
 /**
  * WargaDataController implements the CRUD actions for Warga_data model.
  */
@@ -66,13 +70,13 @@ class WargaDataController extends Controller
     {
         $model = new Warga_data();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
-        } else {
-            return $this->render('create', [
+       // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+       //     return $this->redirect(['view', 'id' => $model->ID]);
+       // } else {
+            return $this->renderAjax('_form', [
                 'model' => $model,
             ]);
-        }
+       // }
     }
 
     /**
