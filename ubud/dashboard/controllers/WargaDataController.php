@@ -3,6 +3,8 @@
 namespace ubud\dashboard\controllers;
 
 use Yii;
+use ubud\dashboard\models\Rt;
+use ubud\dashboard\models\RtSearch;
 use ubud\dashboard\models\Warga_data;
 use ubud\dashboard\models\Warga_dataSearch;
 use yii\web\Controller;
@@ -32,8 +34,10 @@ class WargaDataController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new Warga_dataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new Warga_dataSearch();
+         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		 $searchModel = new RtSearch();
+         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

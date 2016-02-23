@@ -35,7 +35,7 @@ class Warga_data extends \yii\db\ActiveRecord
     {
         return [
             [['RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
-            [['RT'], 'string', 'max' => 10],
+            [['RW','RT'], 'string', 'max' => 10],
             [['KK_NM'], 'string', 'max' => 100],
             [['RUMAH_BLOCK'], 'string', 'max' => 50],
             [['TLP_RUMAH', 'TLP_HP'], 'string', 'max' => 20],
@@ -50,7 +50,8 @@ class Warga_data extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'RT' => 'Rt',
+            'RW' => 'RW',
+            'RT' => 'RT',
             'KK_NM' => 'Kk  Nm',
             'RUMAH_BLOCK' => 'Rumah  Block',
             'RUMAH_NO' => 'Rumah  No',
