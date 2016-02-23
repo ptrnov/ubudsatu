@@ -160,7 +160,7 @@ use kartik\builder\Form;
 ?>
 <div class="body-content">
     <div class="row" style="padding-left: 5px; padding-right: 5px">
-        <div class="col-sm-12 col-md-2 col-lg-12" style="padding-left:80px; padding-right:80px">
+        <div class="col-sm-12 col-md-2 col-lg-12" style="padding-left:15px; padding-right:15px">
             <?php            		
 				echo $dataRw;
             ?>
