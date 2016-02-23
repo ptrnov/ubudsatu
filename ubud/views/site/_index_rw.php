@@ -67,7 +67,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Customer  | Rekap Penjualan Customer -> Rekap under report penjualan sales promotion
 										*/
 										'content' => 'ADART RW',
-										'url' => '/dashboard/penjualan',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 									[
@@ -75,7 +75,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Customer  | Pengeluaran/pencairan  stock ke customer | new coustomer/repeat order
 										*/
 										'content' => 'DATA WARGA',
-										'url' => '/dashboard/penjualan',
+										'url' => '/dashboard/warga-data',
 										'badge' => '0'
 									],	
 									[
