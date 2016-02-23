@@ -83,7 +83,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promoton  | maintenance jadwal Spg | User login Spg | Absensi | Bonus 
 										*/
 										'content' => 'DATA IURAN',
-										'url' => '/dashboard/stock-promo',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 								]),
@@ -104,7 +104,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Salesman  | maintenance jadwal kunjungan salesman 
 										*/
 										'content' => 'Surat Pengatar',
-										'url' => '/salespromo/schadule',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 									[
@@ -112,7 +112,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - IT/Admin/Salesman  | Map input
 										*/
 										'content' => 'Surat Undangan',
-										'url' => '/salespromo/customer-map',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 									[
@@ -120,7 +120,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - IT/Admin/Salesman  | Absensi Salesman
 										*/
 										'content' => 'Surat Perjanjian',
-										'url' => '/salespromo/absensi',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 									[
@@ -128,7 +128,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Salesman  | Profile Salesman | Change Password
 										*/
 										'content' => 'Data Pengurus',
-										'url' => '/salespromo/profile',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 								]),
@@ -148,7 +148,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian Under report Sales promotion
 										*/
 										'content' => 'laporan Harian',
-										'url' => '/salespromo/report-daily',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],	
 									[
@@ -156,7 +156,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang harian di customer under report Sales promotion
 										*/
 										'content' => 'laporan Bulanan',
-										'url' => '/salespromo/report-daily',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],
 									[
@@ -164,7 +164,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian bulanan report Sales promotion
 										*/
 										'content' => 'Rekap Tahunan',
-										'url' => '/salespromo/report-daily',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],	
 									[
@@ -172,7 +172,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang bulanan di customer under report Sales promotion
 										*/
 										'content' => 'Tutup Buku',
-										'url' => '/salespromo/report-daily',
+										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],							
 								]),
