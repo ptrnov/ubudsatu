@@ -58,32 +58,32 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										/* 
 										 * Modul Salesman - Customer  | Buka customer Baru
 										*/
-										'content' => 'ADART RW',
-										'url' => '/salespromo/stock-gudang',
+										'content' => 'DATA MASTER',
+										'url' => '/dashboard/rw',
 										'badge' => '0'
 									],									
 									[
 										/* 
 										 * Modul Salesman - Customer  | Rekap Penjualan Customer -> Rekap under report penjualan sales promotion
 										*/
-										'content' => 'DAFTAR RUMAH',
-										'url' => '/salespromo/penjualan',
+										'content' => 'ADART RW',
+										'url' => '/dashboard/penjualan',
 										'badge' => '0'
 									],
 									[
 										/* 
 										 * Modul Salesman - Customer  | Pengeluaran/pencairan  stock ke customer | new coustomer/repeat order
 										*/
-										'content' => 'DAFTAR WARGA',
-										'url' => '/salespromo/penjualan',
+										'content' => 'DATA WARGA',
+										'url' => '/dashboard/penjualan',
 										'badge' => '0'
 									],	
 									[
 										/* 
 										 * Modul Salesman - Sales Promoton  | maintenance jadwal Spg | User login Spg | Absensi | Bonus 
 										*/
-										'content' => 'DAFTAR PASUM',
-										'url' => '/salespromo/stock-promo',
+										'content' => 'DATA IURAN',
+										'url' => '/dashboard/stock-promo',
 										'badge' => '0'
 									],
 								]),
