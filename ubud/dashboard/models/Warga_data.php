@@ -37,7 +37,7 @@ class Warga_data extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID','STATUS','RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
+            [['SENSUS_FIX','ID','STATUS','RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
             [['RW','RT'], 'string', 'max' => 10],
             [['KK_NM'], 'string', 'max' => 100],
             [['RUMAH_BLOCK'], 'string', 'max' => 50],
