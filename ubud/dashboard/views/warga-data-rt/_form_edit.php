@@ -17,6 +17,7 @@ use ubud\dashboard\models\Warga_block;
 $sttNm = ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS');
 $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_BLOCK');
+
 	/* $aryBlok= [
 		  ['RUMAH_BLOCK' => 1, 'DESCRIP' => 'G1'],		  
 		  ['RUMAH_BLOCK' => 2, 'DESCRIP' => 'G2'],
@@ -44,15 +45,15 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
                 'id'=>'createwarga',
                 'enableClientValidation' => true,
 		//'type' => ActiveForm::TYPE_HORIZONTAL,
-		'method' => 'post',
-		'action' => ['/dashboard/warga-data-rw/simpan'],
+		//'method' => 'post',
+		//'action' => ['/dashboard/warga-data-rt/edit'],
 		]); 
 	?>
 
    
-	<?= $form->field($model, 'RT')->dropDownList($dataRt,['id'=>'data-warga-parent'])->label('Rukun Tetangga'); ?>
-	
-    <?= $form->field($model, 'KK_NM')->textInput(['maxlength' => true]) ?>
+	 <?= $form->field($model, 'rw_disply')->textInput(['value'=>'RT'.Yii::$app->user->identity->warga,'readonly'=>true])->label('Rukun Tetangga'); ?>
+	 <?= $form->field($model, 'RT')->hiddenInput(['value'=>Yii::$app->user->identity->warga,'readonly'=>true])->label(false) ?>
+     <?= $form->field($model, 'KK_NM')->textInput(['maxlength' => true]) ?>
 	<div>
 		<div style="float:right; width:50%">
 			<?= $form->field($model, 'RUMAH_NO')->widget(TouchSpin::classname(), [

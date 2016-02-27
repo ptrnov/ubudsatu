@@ -41,7 +41,7 @@ class Warga_dataSearch extends Warga_data
      */
     public function search($params)
     {
-        $query = Warga_data::find();
+        $query = Warga_data::find()->where('STATUS<>3');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -74,7 +74,7 @@ class Warga_dataSearch extends Warga_data
 	
 	public function searchGroup($params,$idRt)
     {
-        $query = Warga_data::find()->where("RT='".$idRt."'");
+        $query = Warga_data::find()->where("RT='".$idRt."' AND STATUS<>3");
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
