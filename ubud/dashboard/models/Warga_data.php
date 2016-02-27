@@ -37,13 +37,13 @@ class Warga_data extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
+            [['ID','STATUS','RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
             [['RW','RT'], 'string', 'max' => 10],
             [['KK_NM'], 'string', 'max' => 100],
             [['RUMAH_BLOCK'], 'string', 'max' => 50],
             [['TLP_RUMAH', 'TLP_HP'], 'string', 'max' => 20],
             [['TLP_KANTOR'], 'string', 'max' => 30],
-			[['CREATED_BY','UPDATED_BY','CREATED_AT','UPDATED_TIME'], 'safe']
+			[['PHOTO','CREATED_BY','UPDATED_BY','CREATED_AT','UPDATED_TIME'], 'safe']
         ];
     }
 

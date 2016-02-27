@@ -285,6 +285,59 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 				]
 			],
 		],
+		[
+			'class'=>'kartik\grid\ActionColumn',
+			'dropdown' => true,
+			'template' => '{view}{edit}{delete}',
+			'dropdownOptions'=>['class'=>'pull-right dropup'],
+			'buttons' => [
+					'view' =>function($url, $model, $key){
+							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'View'),
+														['/dashboard/warga-data-rt/view','id'=>$model->ID],[	
+														'data-toggle'=>"modal",
+														'data-target'=>"#modal-view",														
+														'data-title'=> 'RT0'.$model->RT,
+														]). '</li>' . PHP_EOL;
+					},
+					'edit' =>function($url, $model, $key){
+							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Edit'),
+														['/dashboard/warga-data-rt/edit','id'=>$model->ID],[	
+														'data-toggle'=>"modal",
+														'data-target'=>"#modal-edit",														
+														'data-title'=> 'RT0'.$model->RT,
+														]). '</li>' . PHP_EOL;					
+					},
+					'delete' =>function($url, $model, $key){
+						return  '<li>' .Html::a('<span class="fa fa-remove fa-dm"></span>'.Yii::t('app', 'delete'),
+													['/dashboard/warga-data-rt/delete','id'=>$model->ID],[
+													'data-method'=>'post',
+													//'data-toggle'=>"modal",
+													//'data-target'=>"#modal-del",
+													//'data-title'=>$model->KK_NM,
+													'data-confirm'=>'Anda yakin ingin menghapus data warga '. $model->KK_NM.' ?',
+													]). '</li>' . PHP_EOL;
+					},					
+			],
+			'headerOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
+				]
+			],
+			'contentOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'height'=>'10px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+				]
+			],
+
+		],
 	];
 
 	$dataWarga=GridView::widget([
@@ -358,4 +411,49 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
     ]);
     Modal::end();
 
+	$this->registerJs("
+         $('#modal-view').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-view',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">View Data Warga</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
+	
+	$this->registerJs("
+         $('#modal-edit').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-edit',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">Edit Data Warga</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
 ?>

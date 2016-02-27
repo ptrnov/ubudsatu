@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model ubud\dashboard\models\Warga_data */
 
-$this->title = $model->ID;
+//$this->title = $model->ID;
 $this->params['breadcrumbs'][] = ['label' => 'Warga Datas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -14,31 +14,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->ID], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'ID',
-            'RT',
-            'KK_NM',
-            'RUMAH_BLOCK',
-            'RUMAH_NO',
-            'RUMAH_STT',
-            'JUMLAH_ANGOTA',
-            'TLP_RUMAH',
-            'TLP_KANTOR',
-            'TLP_HP',
-        ],
-    ]) ?>
+    <?php
+		//if($model->PHOTO == null){ $gmbr = "df.jpg"; } else { $gmbr = $model->PHOTO; } 
+		echo DetailView::widget([
+			'model' => $model,
+			'attributes' => [			
+				[
+					'attribute'=>'PHOTO',
+					'value'=>Yii::$app->urlManager->baseUrl.'/upload/photo_warga/'.$model->PHOTO,
+					'format' => ['image',['width'=>'150','height'=>'150']],
+				],	
+				[
+					'label' => 'Parent',
+					'value' => 'RT0'.$model->RT,
+				],
+				'KK_NM',
+				'RUMAH_BLOCK',
+				'RUMAH_NO',
+				[
+					'label' => 'Parent',
+					'attribute' => 'Sttnm',
+				],
+				'JUMLAH_ANGOTA',
+				'TLP_RUMAH',
+				'TLP_KANTOR',
+				'TLP_HP',
+			],
+		]) 
+	?>
 
 </div>

@@ -43,9 +43,6 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
     <?php $form = ActiveForm::begin([
                 'id'=>'createwarga',
                 'enableClientValidation' => true,
-		//'type' => ActiveForm::TYPE_HORIZONTAL,
-		'method' => 'post',
-		'action' => ['/dashboard/warga-data-rw/simpan'],
 		]); 
 	?>
 

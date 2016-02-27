@@ -80,7 +80,7 @@ class WargaDataRwController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->renderAjax('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -130,14 +130,14 @@ class WargaDataRwController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionEdit($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+           return $this->redirect(['index']);
         } else {
-            return $this->render('update', [
+            return $this->renderAjax('edit', [
                 'model' => $model,
             ]);
         }
@@ -151,9 +151,12 @@ class WargaDataRwController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = Warga_data::find()->where(['ID'=>$id])->one();
+		$model->STATUS = 3;
+		$model->UPDATED_BY = Yii::$app->user->identity->username;
+		$model->save();  
+		
+         return $this->redirect(['index']);
     }
 
     /**
