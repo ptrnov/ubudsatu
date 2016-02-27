@@ -84,33 +84,33 @@ use ubud\dashboard\models\Warga_dataSearch;
 		[
 			'class'=>'kartik\grid\ActionColumn',
 			'dropdown' => true,
-			'template' => '{data_rw}{laporan_rw}{data_rt}{laporan_rt}',
+			'template' => '{data_rw}{laporan_rw}',
 			'dropdownOptions'=>['class'=>'pull-left dropdown'],
 			'buttons' => [
 					'data_rw' =>function($url, $model, $key){
 							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'Warga RW'.$model->id_rw),
-														['/dashboard/warga-data-edit/rw','kd'=>$model->id_rw],[													
+														['/dashboard/warga-data-rw'],[													
 														'data-title'=> $model->id_rt,
 														]). '</li>' . PHP_EOL;
 					},
 					'laporan_rw' =>function($url, $model, $key){
 							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Review Warga RW' .$model->id_rw),
-														['/dashboard/warga-data-edit/analiz_rw','id'=>$model->id_rw],[														
+														['/dashboard/warga-data-rw/analiz'],[														
 														'data-title'=> $model->id_rt,
 														]). '</li>' . PHP_EOL;					
-					},
-					'data_rt' =>function($url, $model, $key){
+					}
+					/* 'data_rt' =>function($url, $model, $key){
 							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'Warga '.$model->ket_rt),
-														['/dashboard/warga-data-edit/rt','kd'=>$model->id_rt],[													
+														['/dashboard/warga-data-rt/rt','kd'=>$model->id_rt],[													
 														'data-title'=> $model->id_rt,
 														]). '</li>' . PHP_EOL;
 					},
 					'laporan_rt' =>function($url, $model, $key){
 							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Review Warga'.$model->ket_rt),
-														['/dashboard/warga-data-edit/analiz_rt','id'=>$model->id_rt],[														
+														['/dashboard/warga-data-rt/analiz','id'=>$model->id_rt],[														
 														'data-title'=> $model->id_rt,
 														]). '</li>' . PHP_EOL;					
-					}
+					} */
 			],
 			'headerOptions'=>[
 				'style'=>[

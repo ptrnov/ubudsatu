@@ -21,6 +21,8 @@ use ubud\dashboard\models\Warga_status;
  */
 class Warga_data extends \yii\db\ActiveRecord
 {
+	
+	public $rw_disply;
     /**
      * @inheritdoc
      */
@@ -40,7 +42,8 @@ class Warga_data extends \yii\db\ActiveRecord
             [['KK_NM'], 'string', 'max' => 100],
             [['RUMAH_BLOCK'], 'string', 'max' => 50],
             [['TLP_RUMAH', 'TLP_HP'], 'string', 'max' => 20],
-            [['TLP_KANTOR'], 'string', 'max' => 30]
+            [['TLP_KANTOR'], 'string', 'max' => 30],
+			[['CREATED_BY','UPDATED_BY','CREATED_AT','UPDATED_TIME'], 'safe']
         ];
     }
 
@@ -61,16 +64,16 @@ class Warga_data extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'RW' => 'RW',
-            'RT' => 'RT',
-            'KK_NM' => 'Kk  Nm',
-            'RUMAH_BLOCK' => 'Rumah  Block',
-            'RUMAH_NO' => 'Rumah  No',
-            'RUMAH_STT' => 'Rumah  Stt',
-            'JUMLAH_ANGOTA' => 'Jumlah  Angota',
-            'TLP_RUMAH' => 'Tlp  Rumah',
-            'TLP_KANTOR' => 'Tlp  Kantor',
-            'TLP_HP' => 'Tlp  Hp',
+            'RW' => 'Rukun.Warga',
+            'RT' => 'Rukun.Tetangga',
+            'KK_NM' => 'Nama.KK',
+            'RUMAH_BLOCK' => 'Block',
+            'RUMAH_NO' => 'No.Rumah',
+            'RUMAH_STT' => 'Status.Rumah',
+            'JUMLAH_ANGOTA' => 'Anggota.Keluarga',
+            'TLP_RUMAH' => 'Tlp.Rumah',
+            'TLP_KANTOR' => 'Tlp.Kantor',
+            'TLP_HP' => 'Handphone',
         ];
     }
 }

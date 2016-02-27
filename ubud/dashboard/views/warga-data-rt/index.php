@@ -3,43 +3,19 @@
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
+use app\models\hrd\Dept;
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
+use yii\bootstrap\Modal;
 use yii\helpers\Url;
-use yii\web\View;
-	
-	
-	/* function tmb_create(){
-		$title = Yii::t('app', 'create');
-		$options = ['id'=>'barang-prodak',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-prodak",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;	 
-	} */
 
-	/* function tombolCari(){
-		$title = Yii::t('app', 'Barang Umum');
-		$options = ['id'=>'barang-umum',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-umum",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;		 
-	} */
-
+use ubud\dashboard\models\Warga_status;
+use ubud\dashboard\models\Rt;
+$sttNm = ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS');
+$dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 	/*
 	 * COLUMN DATA Warga
 	 * @author ptrnov  [piter@lukison.com]
@@ -58,7 +34,7 @@ use yii\web\View;
 					'width'=>'10px',
 					'font-family'=>'tahoma',
 					'font-size'=>'8pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -74,8 +50,40 @@ use yii\web\View;
 						'border-right'=>'0px',
 				]
 			]
-		],		
-		[  	//col-q
+		],
+		[  	//col-1
+			//Nomor RT
+			'attribute' =>'RT',						
+			'label'=>'Rukun Tetangga',
+			'filter'=>false,
+			'mergeHeader'=>true,
+			'value'=>function($model){
+				$nmRt= Rt::find()->where(['id_rt'=>$model->RT])->one();
+				return $nmRt->ket_rt;
+			},
+			'group'=>true,
+			'groupedRow'=>true,
+			'hAlign'=>'left',
+			'vAlign'=>'middle',
+			'headerOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'80px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
+				]
+			],
+			'contentOptions'=>[
+				'style'=>[
+					'text-align'=>'left',
+					'width'=>'80px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+				]
+			],
+		],
+		[  	//col-2
 			//Nama Kepala Keluarga
 			'attribute' => 'KK_NM',						
 			'label'=>'Nama.KK',
@@ -87,7 +95,7 @@ use yii\web\View;
 					'width'=>'150px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -111,12 +119,12 @@ use yii\web\View;
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'center',
+					'text-align'=>'left',
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -135,7 +143,7 @@ use yii\web\View;
 					'width'=>'20px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -149,8 +157,13 @@ use yii\web\View;
 		],
 		[  	//col-5
 			//Status-Kepemilikan Rumah
-			'attribute' =>  'Sttnm',
+			'attribute' =>  'RUMAH_STT',
 			'label'=>'Status.Rumah',
+			'value'=>function($model){
+				$sttNm = Warga_status::find()->where(['ID'=>$model->RUMAH_STT])->one();
+				return $sttNm->RUMAH_STATUS;
+			},
+			'filter'=>$sttNm,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -159,7 +172,7 @@ use yii\web\View;
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -174,7 +187,7 @@ use yii\web\View;
 		[  	//col-6
 			//Jumlah Anggota Keluarga
 			'attribute' =>  'JUMLAH_ANGOTA',
-			'label'=>'Anggota.Keluarga',
+			'label'=>'Anggota Keluarga',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -183,7 +196,7 @@ use yii\web\View;
 					'width'=>'30px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -207,7 +220,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -231,7 +244,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -255,7 +268,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -271,9 +284,9 @@ use yii\web\View;
 
 	$dataWarga=GridView::widget([
 		'id'=>'gv-data-warga',
-        'dataProvider' => $dataProviderWarga,
-        //'filterModel' => $searchModelWarga,
-		'filterRowOptions'=>['style'=>'background-color:rgba(97, 211, 96, 0.3); align:center'],
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+		'filterRowOptions'=>['style'=>'background-color:rgba(0, 95, 218, 0.3); align:center'],
 		'showPageSummary' => true,
 		'columns' =>$clmWarga,
 		'pjax'=>true,
@@ -283,25 +296,20 @@ use yii\web\View;
 			'id'=>'gv-data-warga',
 		   ],
 		],
-		/* 'toolbar'=> [
-			
-				[	
-					'content'=>function (event, ind, key, extra, state){ return tmb_create('1');},					
-				],
-			
-		], */
-		'panel'=>[
-				'type'=>GridView::TYPE_DANGER,
-				'heading'=>"<span class='fa fa-shopping-cart fa-xs'><b> RUKUN TETANGGA </b></span>",
-				'contentOptions'=>[
-					'style'=>[
-						'text-align'=>'left',
-						'width'=>'60px',
-						'font-family'=>'tahoma, arial, sans-serif',
-						'font-size'=>'9pt',
-					]
-				],
-		],  
+		'panel' => [
+					'heading'=>'<h3 class="panel-title">DATA WARGA</h3>',
+					//'type'=>'warning',
+					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Tambah Warga ',
+							['modelClass' => 'Kategori',]),'/dashboard/warga-data-rt/create',[
+								'data-toggle'=>"modal",
+								'data-target'=>"#modal-create",
+								'class' => 'btn btn-success'
+													]), 
+					'showFooter'=>false,
+		],
+		'toolbar'=> [
+			//'{items}',
+		], 
 		'hover'=>true, //cursor select
 		'responsive'=>true,
 		'responsiveWrap'=>true,
@@ -321,16 +329,28 @@ use yii\web\View;
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
+	$this->registerJs("
+         $('#modal-create').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-create',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">Masukan Data Warga</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
+
+?>

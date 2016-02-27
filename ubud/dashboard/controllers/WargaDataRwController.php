@@ -18,7 +18,7 @@ use ubud\dashboard\models\Warga_dataSearch;
 /**
  * WargaDataController implements the CRUD actions for Warga_data model.
  */
-class WargaDataEditController extends Controller
+class WargaDataRwController extends Controller
 {
     public function behaviors()
     {
@@ -38,41 +38,40 @@ class WargaDataEditController extends Controller
      */
     public function actionIndex()
     {
+		$searchModel = new Warga_dataSearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		
+		return $this->render('index', [
+		'searchModel' => $searchModel,
+		'dataProvider' => $dataProvider,
+		]);
+    }
+
+	
+	// public function actionRw($kd)
+    // {
         // $searchModel = new Warga_dataSearch();
-         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		 $searchModel = new RtSearch();
-         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-	
-	 public function actionRw($kd)
-    {
-        $searchModel = new Warga_dataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 		
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+        // return $this->render('index', [
+            // 'searchModel' => $searchModel,
+            // 'dataProvider' => $dataProvider,
+        // ]);
+    // }
 	
 	
-	public function actionRt($kd)
-    {
-        $searchModel = new Warga_dataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	// public function actionRt($kd)
+    // {
+        // $searchModel = new Warga_dataSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 		
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    } 
+        // return $this->render('index', [
+            // 'searchModel' => $searchModel,
+            // 'dataProvider' => $dataProvider,
+        // ]);
+    // } 
+	
 	
     /**
      * Displays a single Warga_data model.
@@ -103,7 +102,28 @@ class WargaDataEditController extends Controller
             ]);
        // }
     }
+	
+	public function actionSimpan()
+    {
+        $model = new Warga_data();
 
+		if($model->load(Yii::$app->request->post())){                  
+                    $model->CREATED_BY = Yii::$app->user->identity->username;
+                    $model->CREATED_AT = date('Y-m-d H:i:s');
+                    $model->save();                    
+//                    print_r($model);
+//                    die();
+                    
+		//return $this->redirect(['rw','kd'=>'11']);
+		return $this->redirect(['index']);
+                    
+                }
+	else{
+            return ActiveForm::validate($model);
+        }	
+    }
+	
+	
     /**
      * Updates an existing Warga_data model.
      * If update is successful, the browser will be redirected to the 'view' page.
