@@ -13,10 +13,12 @@ use kartik\widgets\TouchSpin;
 
 use ubud\dashboard\models\Warga_status;
 use ubud\dashboard\models\Rt;
+use ubud\dashboard\models\Warga_block;
 $sttNm = ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS');
 $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
+$dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'ID', 'RUMAH_BLOCK');
 
-	$aryBlok= [
+	/* $aryBlok= [
 		  ['RUMAH_BLOCK' => 1, 'DESCRIP' => 'G1'],		  
 		  ['RUMAH_BLOCK' => 2, 'DESCRIP' => 'G2'],
 		  ['RUMAH_BLOCK' => 3, 'DESCRIP' => 'G3'],
@@ -32,7 +34,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 		  ['RUMAH_BLOCK' => 13, 'DESCRIP' => 'G31'],
 		  ['RUMAH_BLOCK' => 14, 'DESCRIP' => 'G32'],
 	];	
-	$valBlok = ArrayHelper::map($aryBlok, 'DESCRIP', 'DESCRIP');
+	$valBlok = ArrayHelper::map($aryBlok, 'DESCRIP', 'DESCRIP'); */
 
 
 ?>
@@ -67,7 +69,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			?>			
 		</div>
 		<div style=" width:50%">
-			<?= $form->field($model, 'RUMAH_BLOCK')->dropDownList($valBlok,['id'=>'data-warga-block']); ?>
+			<?= $form->field($model, 'RUMAH_BLOCK')->dropDownList($dataBlock,['id'=>'data-warga-block']); ?>
 		</div>
 	</div>
 	<?= $form->field($model, 'RUMAH_STT')->dropDownList($sttNm,['id'=>'data-warga-rumastatus']); ?>

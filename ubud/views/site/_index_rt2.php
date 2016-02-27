@@ -76,7 +76,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										/* 
 										 * Modul Customer - Stock Penjualan | input Penjualan langsung dari Customer
 										*/
-										'content' => 'DAFTAR WARGA',
+										'content' => 'DATA IURAN',
 										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],

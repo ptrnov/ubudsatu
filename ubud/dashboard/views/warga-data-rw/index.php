@@ -14,8 +14,11 @@ use yii\helpers\Url;
 
 use ubud\dashboard\models\Warga_status;
 use ubud\dashboard\models\Rt;
+use ubud\dashboard\models\Warga_block;
+
 $sttNm = ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS');
 $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
+$dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_BLOCK');
 	/*
 	 * COLUMN DATA Warga
 	 * @author ptrnov  [piter@lukison.com]
@@ -108,6 +111,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			//Block Rumah
 			'attribute' => 'RUMAH_BLOCK',
 			'label'=>'Block',
+			'filter'=>$dataBlock,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
