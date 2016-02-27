@@ -49,7 +49,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 	?>
 
    
-	 <?= $form->field($model, 'rw_disply')->textInput(['value'=>'RT'.Yii::$app->user->identity->warga,'readonly'=>true]) ?>
+	 <?= $form->field($model, 'rw_disply')->textInput(['value'=>'RT'.Yii::$app->user->identity->warga,'readonly'=>true])->label('Rukun Tetangga'); ?>
 	 <?= $form->field($model, 'RT')->hiddenInput(['value'=>Yii::$app->user->identity->warga,'readonly'=>true])->label(false) ?>
      <?= $form->field($model, 'KK_NM')->textInput(['maxlength' => true]) ?>
 	<div>

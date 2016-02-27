@@ -49,7 +49,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 	?>
 
    
-	<?= $form->field($model, 'RT')->dropDownList($dataRt,['id'=>'data-warga-parent']); ?>
+	<?= $form->field($model, 'RT')->dropDownList($dataRt,['id'=>'data-warga-parent'])->label('Rukun Tetangga'); ?>
 	
     <?= $form->field($model, 'KK_NM')->textInput(['maxlength' => true]) ?>
 	<div>
