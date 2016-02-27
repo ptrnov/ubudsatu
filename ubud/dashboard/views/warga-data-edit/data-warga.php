@@ -283,6 +283,25 @@ use yii\web\View;
 			'id'=>'gv-data-warga',
 		   ],
 		],
+		/* 'toolbar'=> [
+			
+				[	
+					'content'=>function (event, ind, key, extra, state){ return tmb_create('1');},					
+				],
+			
+		], */
+		'panel'=>[
+				'type'=>GridView::TYPE_DANGER,
+				'heading'=>"<span class='fa fa-shopping-cart fa-xs'><b> RUKUN TETANGGA </b></span>",
+				'contentOptions'=>[
+					'style'=>[
+						'text-align'=>'left',
+						'width'=>'60px',
+						'font-family'=>'tahoma, arial, sans-serif',
+						'font-size'=>'9pt',
+					]
+				],
+		],  
 		'hover'=>true, //cursor select
 		'responsive'=>true,
 		'responsiveWrap'=>true,

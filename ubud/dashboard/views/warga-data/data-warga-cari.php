@@ -8,37 +8,9 @@ use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
-use yii\helpers\Url;
-use yii\web\View;
-	
-	
-	/* function tmb_create(){
-		$title = Yii::t('app', 'create');
-		$options = ['id'=>'barang-prodak',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-prodak",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;	 
-	} */
 
-	/* function tombolCari(){
-		$title = Yii::t('app', 'Barang Umum');
-		$options = ['id'=>'barang-umum',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-umum",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;		 
-	} */
+
+
 
 	/*
 	 * COLUMN DATA Warga
@@ -188,7 +160,7 @@ use yii\web\View;
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'center',
+					'text-align'=>'left',
 					'width'=>'30px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -272,7 +244,7 @@ use yii\web\View;
 	$dataWarga=GridView::widget([
 		'id'=>'gv-data-warga',
         'dataProvider' => $dataProviderWarga,
-        //'filterModel' => $searchModelWarga,
+        'filterModel' => $searchModelWarga,
 		'filterRowOptions'=>['style'=>'background-color:rgba(97, 211, 96, 0.3); align:center'],
 		'showPageSummary' => true,
 		'columns' =>$clmWarga,
@@ -283,6 +255,20 @@ use yii\web\View;
 			'id'=>'gv-data-warga',
 		   ],
 		],
+		'panel' => [
+					'heading'=>'<h3 class="panel-title">DATA WARGA</h3>',
+					'type'=>'warning',
+					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Add KK',
+							['modelClass' => 'Data-warga',]),'/dashboard/warga-data/create',[
+								'data-toggle'=>"modal",
+									'data-target'=>"#modal-create",
+										'class' => 'btn btn-success'
+													]), 
+					'showFooter'=>false,
+		],
+		'toolbar'=> [
+			//'{items}',
+		], 
 		'hover'=>true, //cursor select
 		'responsive'=>true,
 		'responsiveWrap'=>true,

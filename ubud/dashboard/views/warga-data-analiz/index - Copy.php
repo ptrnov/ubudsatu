@@ -3,42 +3,13 @@
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
+use app\models\hrd\Dept;
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
-use yii\helpers\Url;
-use yii\web\View;
-	
-	
-	/* function tmb_create(){
-		$title = Yii::t('app', 'create');
-		$options = ['id'=>'barang-prodak',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-prodak",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;	 
-	} */
 
-	/* function tombolCari(){
-		$title = Yii::t('app', 'Barang Umum');
-		$options = ['id'=>'barang-umum',
-					'data-toggle'=>"modal",
-					'data-target'=>"#check-barang-umum",
-					'class' => 'btn btn-default btn-sm'
-		];
-		$icon = '<span class="glyphicon glyphicon-search"></span>';
-		$label = $icon . ' ' . $title;
-		$url = Url::toRoute(['#']);
-		$content = Html::a($label,$url, $options);
-		return $content;		 
-	} */
 
 	/*
 	 * COLUMN DATA Warga
@@ -58,7 +29,7 @@ use yii\web\View;
 					'width'=>'10px',
 					'font-family'=>'tahoma',
 					'font-size'=>'8pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -74,11 +45,35 @@ use yii\web\View;
 						'border-right'=>'0px',
 				]
 			]
-		],		
-		[  	//col-q
+		],
+		[  	//col-1
+			//Nomor RT
+			'attribute' =>'RT',						
+			'label'=>'Rukun Tetangga',
+			'hAlign'=>'left',
+			'vAlign'=>'middle',
+			'headerOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
+				]
+			],
+			'contentOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+				]
+			],
+		],
+		[  	//col-2
 			//Nama Kepala Keluarga
 			'attribute' => 'KK_NM',						
-			'label'=>'Nama.KK',
+			'label'=>'Nama',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -87,7 +82,7 @@ use yii\web\View;
 					'width'=>'150px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -102,7 +97,7 @@ use yii\web\View;
 		[  	//col-3
 			//Block Rumah
 			'attribute' => 'RUMAH_BLOCK',
-			'label'=>'Block',
+			'label'=>'Employee-Name',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -111,12 +106,12 @@ use yii\web\View;
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'center',
+					'text-align'=>'left',
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -126,7 +121,7 @@ use yii\web\View;
 		[  	//col-4
 			//No Rumah
 			'attribute' => 'RUMAH_NO',
-			'label'=>'No.Rumah',
+			'label'=>'Employee-Name',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -135,7 +130,7 @@ use yii\web\View;
 					'width'=>'20px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -149,8 +144,8 @@ use yii\web\View;
 		],
 		[  	//col-5
 			//Status-Kepemilikan Rumah
-			'attribute' =>  'Sttnm',
-			'label'=>'Status.Rumah',
+			'attribute' =>  'RUMAH_STT',
+			'label'=>'Status-Kepemilikan',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -159,7 +154,7 @@ use yii\web\View;
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -174,7 +169,7 @@ use yii\web\View;
 		[  	//col-6
 			//Jumlah Anggota Keluarga
 			'attribute' =>  'JUMLAH_ANGOTA',
-			'label'=>'Anggota.Keluarga',
+			'label'=>'Anggota Keluarga',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -183,12 +178,12 @@ use yii\web\View;
 					'width'=>'30px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'center',
+					'text-align'=>'left',
 					'width'=>'30px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -198,7 +193,7 @@ use yii\web\View;
 		[  	//col-7
 			//TLP_RUMAH
 			'attribute' => 'TLP_RUMAH',
-			'label'=>'Tlp.Rumah',
+			'label'=>'Tlp-Rumah',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -207,7 +202,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -222,7 +217,7 @@ use yii\web\View;
 		[  	//col-8
 			//TLP_KANTOR
 			'attribute' =>'TLP_KANTOR',
-			'label'=>'Tlp.Kantor',
+			'label'=>'Tlp-Kantor',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -231,7 +226,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -255,7 +250,7 @@ use yii\web\View;
 					'width'=>'60px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
 				]
 			],
 			'contentOptions'=>[
@@ -271,9 +266,9 @@ use yii\web\View;
 
 	$dataWarga=GridView::widget([
 		'id'=>'gv-data-warga',
-        'dataProvider' => $dataProviderWarga,
-        //'filterModel' => $searchModelWarga,
-		'filterRowOptions'=>['style'=>'background-color:rgba(97, 211, 96, 0.3); align:center'],
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+		'filterRowOptions'=>['style'=>'background-color:rgba(0, 95, 218, 0.3); align:center'],
 		'showPageSummary' => true,
 		'columns' =>$clmWarga,
 		'pjax'=>true,
@@ -283,6 +278,20 @@ use yii\web\View;
 			'id'=>'gv-data-warga',
 		   ],
 		],
+		'panel' => [
+					'heading'=>'<h3 class="panel-title">DATA WARGA</h3>',
+					/* 'type'=>'warning',
+					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Add Customer ',
+							['modelClass' => 'Kategori',]),'/master/barang/create',[
+								'data-toggle'=>"modal",
+									'data-target'=>"#modal-create",
+										'class' => 'btn btn-success'
+													]), */
+					'showFooter'=>false,
+		],
+		'toolbar'=> [
+			//'{items}',
+		], 
 		'hover'=>true, //cursor select
 		'responsive'=>true,
 		'responsiveWrap'=>true,

@@ -4,6 +4,7 @@ namespace ubud\dashboard\models;
 
 use Yii;
 
+use ubud\dashboard\models\Warga_status;
 /**
  * This is the model class for table "warga_data".
  *
@@ -43,6 +44,16 @@ class Warga_data extends \yii\db\ActiveRecord
         ];
     }
 
+	public function getSttrumah(){
+		return $this->hasOne(Warga_status::className(), ['ID' => 'RUMAH_STT']);
+	}
+	
+	public function getSttnm(){
+		return $this->sttrumah->RUMAH_STATUS;
+	}
+	
+	
+	
     /**
      * @inheritdoc
      */
