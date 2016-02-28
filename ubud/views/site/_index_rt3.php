@@ -58,33 +58,33 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 							'postBody' => Html::listGroup([
 									[
 										/* 
-										 * Modul Customer - Request Order | customer request stock prodak
+										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian Under report Sales promotion
 										*/
-										'content' => 'ADART RT',
-										'url' => '/dashboard/maintenance',
+										'content' => 'laporan Harian',
+										'url' => '/dashboard/pembukuan-harian',
+										'badge' => '0'
+									],	
+									[
+										/* 
+										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang harian di customer under report Sales promotion
+										*/
+										'content' => 'laporan Bulanan',
+										'url' => '/dashboard/pembukuan-bulanan',
 										'badge' => '0'
 									],
 									[
 										/* 
-										 * Modul Customer - Stock Gudang | Input Confirmasi pembayaran customer customer || Attach upload -> bukti pembayaran
+										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian bulanan report Sales promotion
 										*/
-										'content' => 'DATA WARGA',
-										'url' => '/dashboard/warga-data-rt',
+										'content' => 'Rekap Tahunan',
+										'url' => '/dashboard/pembukuan-tahunan',
 										'badge' => '0'
-									],
+									],	
 									[
 										/* 
-										 * Modul Customer - Stock Penjualan | input Penjualan langsung dari Customer
+										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang bulanan di customer under report Sales promotion
 										*/
-										'content' => 'DATA IURAN',
-										'url' => '/dashboard/maintenance',
-										'badge' => '0'
-									],
-									[
-										/* 
-										 * Modul Sales Promotion - Stock Penjualan | input Stock langsung dariCustomer
-										*/
-										'content' => 'DAFTAR PASUM',
+										'content' => 'Tutup Buku',
 										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],									

@@ -58,6 +58,14 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 							'postBody' => Html::listGroup([
 									[
 										/* 
+										 * Modul Salesman - Customer  | Buka customer Baru
+										*/
+										'content' => 'DATA MASTER',
+										'url' => '/dashboard/rw',
+										'badge' => '0'
+									],	
+									[
+										/* 
 										 * Modul Customer - Request Order | customer request stock prodak
 										*/
 										'content' => 'ADART RT',
@@ -77,17 +85,9 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Customer - Stock Penjualan | input Penjualan langsung dari Customer
 										*/
 										'content' => 'DATA IURAN',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-storan',
 										'badge' => '0'
-									],
-									[
-										/* 
-										 * Modul Sales Promotion - Stock Penjualan | input Stock langsung dariCustomer
-										*/
-										'content' => 'DAFTAR PASUM',
-										'url' => '/dashboard/maintenance',
-										'badge' => '0'
-									],									
+									]																
 								]),
 						],
 						Html::TYPE_INFO
@@ -150,7 +150,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian Under report Sales promotion
 										*/
 										'content' => 'laporan Harian',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-harian',
 										'badge' => '0'
 									],	
 									[
@@ -158,7 +158,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang harian di customer under report Sales promotion
 										*/
 										'content' => 'laporan Bulanan',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-bulanan',
 										'badge' => '0'
 									],
 									[
@@ -166,7 +166,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian bulanan report Sales promotion
 										*/
 										'content' => 'Rekap Tahunan',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-tahunan',
 										'badge' => '0'
 									],	
 									[

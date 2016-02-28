@@ -418,6 +418,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			'value'=>function ($model, $key, $index, $widget) {
 						return sttPembukuan($model);
 			},	
+			'mergeHeader'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',	
 			'headerOptions'=>[
@@ -473,7 +474,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			   ],
 		],
 		'panel' => [
-					'heading'=>'<h3 class="panel-title">PEMBUKUAN RW</h3>',
+					'heading'=>'<h3 class="panel-title">PEMBUKUAN IURAN/STORAN</h3>',
 					//'type'=>'warning',
 					/* 'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Tambah Warga ',
 							['modelClass' => 'Kategori',]),'/dashboard/warga-data-rt/create',[

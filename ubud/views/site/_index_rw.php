@@ -83,7 +83,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promoton  | maintenance jadwal Spg | User login Spg | Absensi | Bonus 
 										*/
 										'content' => 'DATA IURAN',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-storan',
 										'badge' => '0'
 									],
 								]),
@@ -148,7 +148,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian Under report Sales promotion
 										*/
 										'content' => 'laporan Harian',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-harian',
 										'badge' => '0'
 									],	
 									[
@@ -156,7 +156,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang harian di customer under report Sales promotion
 										*/
 										'content' => 'laporan Bulanan',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-bulanan',
 										'badge' => '0'
 									],
 									[
@@ -164,7 +164,7 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian bulanan report Sales promotion
 										*/
 										'content' => 'Rekap Tahunan',
-										'url' => '/dashboard/maintenance',
+										'url' => '/dashboard/pembukuan-tahunan',
 										'badge' => '0'
 									],	
 									[

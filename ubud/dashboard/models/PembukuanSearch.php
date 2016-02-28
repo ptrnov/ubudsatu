@@ -57,8 +57,7 @@ class PembukuanSearch extends Pembukuan
         }
 
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'TGL' => $this->TGL,
+            'ID' => $this->ID,            
             'TYPE' => $this->TYPE,
             'CHILD' => $this->CHILD,
             'SRC_DSC_QTY' => $this->SRC_DSC_QTY,
@@ -74,6 +73,175 @@ class PembukuanSearch extends Pembukuan
             ->andFilterWhere(['like', 'SRC_DSC_DETAIL', $this->SRC_DSC_DETAIL])
             ->andFilterWhere(['like', 'KETERANGAN', $this->KETERANGAN])
             ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'TGL', $this->TGL])
+            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+
+        return $dataProvider;
+    }
+	
+	/**
+     * REPORT HARIAN
+     */
+    public function searchHarian($params)
+    {
+        $query = Pembukuan::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'ID' => $this->ID,            
+            'TYPE' => $this->TYPE,
+            'CHILD' => $this->CHILD,
+            'SRC_DSC_QTY' => $this->SRC_DSC_QTY,
+            'SRC_DSC_PRICE' => $this->SRC_DSC_PRICE,
+            'STATUS' => $this->STATUS,
+            'CREATED_AT' => $this->CREATED_AT,
+            'UPDATED_TIME' => $this->UPDATED_TIME,
+        ]);
+
+        $query->andFilterWhere(['like', 'SRC', $this->SRC])
+            ->andFilterWhere(['like', 'SRC_DSC_REF', $this->SRC_DSC_REF])
+            ->andFilterWhere(['like', 'SRC_DSC', $this->SRC_DSC])
+            ->andFilterWhere(['like', 'SRC_DSC_DETAIL', $this->SRC_DSC_DETAIL])
+            ->andFilterWhere(['like', 'KETERANGAN', $this->KETERANGAN])
+            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'TGL', $this->TGL])
+            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+
+        return $dataProvider;
+    }
+	
+	/**
+     * REPORT BULANAN
+     */
+    public function searchBulanan($params)
+    {
+        $query = Pembukuan::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'ID' => $this->ID,            
+            'TYPE' => $this->TYPE,
+            'CHILD' => $this->CHILD,
+            'SRC_DSC_QTY' => $this->SRC_DSC_QTY,
+            'SRC_DSC_PRICE' => $this->SRC_DSC_PRICE,
+            'STATUS' => $this->STATUS,
+            'CREATED_AT' => $this->CREATED_AT,
+            'UPDATED_TIME' => $this->UPDATED_TIME,
+        ]);
+
+        $query->andFilterWhere(['like', 'SRC', $this->SRC])
+            ->andFilterWhere(['like', 'SRC_DSC_REF', $this->SRC_DSC_REF])
+            ->andFilterWhere(['like', 'SRC_DSC', $this->SRC_DSC])
+            ->andFilterWhere(['like', 'SRC_DSC_DETAIL', $this->SRC_DSC_DETAIL])
+            ->andFilterWhere(['like', 'KETERANGAN', $this->KETERANGAN])
+            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'TGL', $this->TGL])
+            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+
+        return $dataProvider;
+    }
+	
+	/**
+     * REPORT Tahunan
+     */
+    public function searchTahunan($params)
+    {
+        $query = Pembukuan::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'ID' => $this->ID,            
+            'TYPE' => $this->TYPE,
+            'CHILD' => $this->CHILD,
+            'SRC_DSC_QTY' => $this->SRC_DSC_QTY,
+            'SRC_DSC_PRICE' => $this->SRC_DSC_PRICE,
+            'STATUS' => $this->STATUS,
+            'CREATED_AT' => $this->CREATED_AT,
+            'UPDATED_TIME' => $this->UPDATED_TIME,
+        ]);
+
+        $query->andFilterWhere(['like', 'SRC', $this->SRC])
+            ->andFilterWhere(['like', 'SRC_DSC_REF', $this->SRC_DSC_REF])
+            ->andFilterWhere(['like', 'SRC_DSC', $this->SRC_DSC])
+            ->andFilterWhere(['like', 'SRC_DSC_DETAIL', $this->SRC_DSC_DETAIL])
+            ->andFilterWhere(['like', 'KETERANGAN', $this->KETERANGAN])
+            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'TGL', $this->TGL])
+            ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
+
+        return $dataProvider;
+    }
+	
+	/**
+     * REPORT Iuran
+     */
+    public function searchSetoran($params)
+    {
+        $query = Pembukuan::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'ID' => $this->ID,            
+            'TYPE' => $this->TYPE,
+            'CHILD' => $this->CHILD,
+            'SRC_DSC_QTY' => $this->SRC_DSC_QTY,
+            'SRC_DSC_PRICE' => $this->SRC_DSC_PRICE,
+            'STATUS' => $this->STATUS,
+            'CREATED_AT' => $this->CREATED_AT,
+            'UPDATED_TIME' => $this->UPDATED_TIME,
+        ]);
+
+        $query->andFilterWhere(['like', 'SRC', $this->SRC])
+            ->andFilterWhere(['like', 'SRC_DSC_REF', $this->SRC_DSC_REF])
+            ->andFilterWhere(['like', 'SRC_DSC', $this->SRC_DSC])
+            ->andFilterWhere(['like', 'SRC_DSC_DETAIL', $this->SRC_DSC_DETAIL])
+            ->andFilterWhere(['like', 'KETERANGAN', $this->KETERANGAN])
+            ->andFilterWhere(['like', 'CREATED_BY', $this->CREATED_BY])
+            ->andFilterWhere(['like', 'TGL', $this->TGL])
             ->andFilterWhere(['like', 'UPDATED_BY', $this->UPDATED_BY]);
 
         return $dataProvider;

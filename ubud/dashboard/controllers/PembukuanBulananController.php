@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * PembukuanController implements the CRUD actions for Pembukuan model.
  */
-class PembukuanController extends Controller
+class PembukuanBulananController extends Controller
 {
     public function behaviors()
     {
@@ -62,7 +62,7 @@ class PembukuanController extends Controller
 			$searchModel = new PembukuanSearch([
 				'SRC'=>Yii::$app->user->identity->warga
 			]);
-			$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+			$dataProvider = $searchModel->searchBulanan(Yii::$app->request->queryParams);
 
 			return $this->render('index', [
 				'searchModel' => $searchModel,
