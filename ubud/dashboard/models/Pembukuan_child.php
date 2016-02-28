@@ -42,13 +42,8 @@ class Pembukuan_child extends \yii\db\ActiveRecord
         return [
             'CHILD_ID' => 'Child  ID',
             'TYPE_ID' => 'Type  ID',
-            'CHILD_NM' => 'Pemasukan
-TYPE_ID=1
-CHIld NM : SETORAN RT
-Pengeluaran 
-TYPE_ID=2
-CHIld NM : GAJI SKURITY',
-            'SRC' => 'RW/RT/1234',
+            'CHILD_NM' => 'CHILD_NM',
+            'SRC' => 'WARGA',
         ];
     }
 }
