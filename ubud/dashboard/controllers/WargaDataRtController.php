@@ -38,16 +38,18 @@ class WargaDataRtController extends Controller
      */
     public function actionIndex()
     {
-		 $searchModel = new Warga_dataSearch([
-			'RT'=>Yii::$app->user->identity->warga
-		]); 
-		//$searchModel = new Warga_dataSearch();
-		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		
-		return $this->render('index', [
-		'searchModel' => $searchModel,
-		'dataProvider' => $dataProvider,
-		]);
+		if (!Yii::$app->user->isGuest){
+			$searchModel = new Warga_dataSearch([
+				'RT'=>Yii::$app->user->identity->warga
+			]); 
+			//$searchModel = new Warga_dataSearch();
+			$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+			
+			return $this->render('index', [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider,
+			]);
+		}
     }
 	
     /**
@@ -82,23 +84,19 @@ class WargaDataRtController extends Controller
 	
 	public function actionSimpan()
     {
-        $model = new Warga_data();
-
-		if($model->load(Yii::$app->request->post())){                  
-                    $model->CREATED_BY = Yii::$app->user->identity->username;
-                    $model->CREATED_AT = date('Y-m-d H:i:s');
-                    $model->save();                    
-//                    print_r($model);
-//                    die();
-                    
-		//return $this->redirect(['rw','kd'=>'11']);
-		return $this->redirect(['index']);
-                    
-                }
-	else{
-            return ActiveForm::validate($model);
-        }	
-    }
+		if (!Yii::$app->user->isGuest){
+			$model = new Warga_data();
+			if($model->load(Yii::$app->request->post())){                  
+						$model->CREATED_BY = Yii::$app->user->identity->username;
+						$model->CREATED_AT = date('Y-m-d H:i:s');
+						$model->save();                    
+	
+				return $this->redirect(['index']);						
+			}else{
+				return ActiveForm::validate($model);
+			}	
+		}
+	}
 	
 	
     /**
@@ -128,12 +126,14 @@ class WargaDataRtController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = Warga_data::find()->where(['ID'=>$id])->one();
-		$model->STATUS = 3;
-		$model->UPDATED_BY = Yii::$app->user->identity->username;
-		$model->save();  
-		
-         return $this->redirect(['index']);
+		if (!Yii::$app->user->isGuest){
+			$model = Warga_data::find()->where(['ID'=>$id])->one();
+			$model->STATUS = 3;
+			$model->UPDATED_BY = Yii::$app->user->identity->username;
+			$model->save();  
+			
+			 return $this->redirect(['index']);
+		}
     }
 
     /**
