@@ -4,6 +4,12 @@ namespace ubud\dashboard\models;
 
 use Yii;
 
+
+use ubud\dashboard\models\Pembukuan_type;
+use ubud\dashboard\models\Pembukuan_child;
+use ubud\dashboard\models\Pembukuan_golongan;
+use ubud\dashboard\models\Rt;
+
 /**
  * This is the model class for table "pembukuan".
  *
@@ -34,6 +40,21 @@ class Pembukuan extends \yii\db\ActiveRecord
         return 'pembukuan';
     }
 
+	public function getBooktype(){
+		return $this->hasOne(Pembukuan_type::className(), ['TYPE_ID' => 'TYPE']);
+	}
+	
+	public function getTypenm(){
+		return $this->booktype->TYPE_NM;
+	}
+	
+	public function getBookchild(){
+		return $this->hasOne(Pembukuan_child::className(), ['CHILD_ID' => 'CHILD']);
+	}
+	
+	public function getChildnm(){
+		return $this->bookchild!=''? $this->bookchild->CHILD_NM:'none';
+	}
     /**
      * @inheritdoc
      */

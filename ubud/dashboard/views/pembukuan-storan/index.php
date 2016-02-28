@@ -29,6 +29,13 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 		  ['user_warga' => 4, 'DESCRIP' => 'RT04'],
 	];	
 	$valSource = ArrayHelper::map($arySource, 'DESCRIP', 'DESCRIP'); 
+	
+	$aryStatus= [
+		  ['STATUS' =>0, 'DESCRIP' => 'proses'],		  
+		  ['STATUS' =>1, 'DESCRIP' => 'closing']
+	];	
+	$valStatus = ArrayHelper::map($aryStatus, 'STATUS', 'DESCRIP'); 
+	
 	function sttPembukuan($model){
 		if($model->STATUS==0){
 			/*open*/
@@ -122,8 +129,9 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			'filter'=>$filterTypeNm,			
 			'value'=>function($model){
 				$nmType= Pembukuan_type::find()->where(['TYPE_ID'=>$model->TYPE])->one();
-				return $nmType->TYPE_NM;
+				return $nmType!=''? $nmType->TYPE_NM:'none';
 			},
+			'noWrap'=>false,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -152,7 +160,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			'noWrap'=>true,
 			'value'=>function($model){
 				$nmChild= Pembukuan_child::find()->where(['CHILD_ID'=>$model->CHILD])->one();
-				return $nmChild->CHILD_NM;
+				return $nmChild!=''?$nmChild->CHILD_NM:'none';
 			},
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -176,7 +184,8 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 		],  
         [  	//col-4
 			//Source Login Check -> report
-			'attribute' =>'SRC',		
+			'attribute' =>'SRC',
+			'noWrap'=>false,			
 			'label'=>'State',
 			'filter'=>$valSource,
 			/* 'value'=>function($model){
@@ -184,7 +193,7 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 				return $nmRt->ket_rt;
 			}, */
 			'hAlign'=>'left',
-			'vAlign'=>'middle',
+			'vAlign'=>'middle',			
 			'headerOptions'=>[
 				'style'=>[
 					'text-align'=>'center',
@@ -413,12 +422,12 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 			//STATUS -> closing/open
 			'attribute' =>'STATUS',	
 			'label'=>'Status',
-			'filter'=>false, 	
+			'filter'=>$valStatus, 	
 			'format' => 'html',
 			'value'=>function ($model, $key, $index, $widget) {
 						return sttPembukuan($model);
 			},	
-			'mergeHeader'=>true,
+			//'mergeHeader'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',	
 			'headerOptions'=>[
@@ -439,13 +448,59 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 				]
 			],
 		],
-		//['class' => 'yii\grid\ActionColumn'],
-            // 'STATUS',
-            // 'CREATED_BY',
-            // 'UPDATED_BY',
-            // 'CREATED_AT',
-            // 'UPDATED_TIME',
+		[
+			'class'=>'kartik\grid\ActionColumn',
+			'dropdown' => true,
+			'template' => '{view}{edit}{delete}',
+			'dropdownOptions'=>['class'=>'pull-right dropup'],
+			'buttons' => [
+					'view' =>function($url, $model, $key){
+							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'View'),
+														['/dashboard/pembukuan-harian/view','id'=>$model->ID],[	
+														'data-toggle'=>"modal",
+														'data-target'=>"#modal-view",														
+														'data-title'=> 'RT0'.$model->SRC_DSC_REF,
+														]). '</li>' . PHP_EOL;
+					},
+					'edit' =>function($url, $model, $key){
+							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Edit'),
+														['/dashboard/pembukuan-harian/edit','id'=>$model->ID],[	
+														'data-toggle'=>"modal",
+														'data-target'=>"#modal-edit",														
+														'data-title'=> 'RT0'.$model->SRC_DSC_REF,
+														]). '</li>' . PHP_EOL;					
+					},
+					'delete' =>function($url, $model, $key){
+						return  '<li>' .Html::a('<span class="fa fa-remove fa-dm"></span>'.Yii::t('app', 'delete'),
+													['/dashboard/pembukuan-harian/delete','id'=>$model->ID],[
+													'data-method'=>'post',
+													//'data-toggle'=>"modal",
+													//'data-target'=>"#modal-del",
+													//'data-title'=>$model->KK_NM,
+													'data-confirm'=>'Anda yakin ingin menghapus data warga '. $model->SRC_DSC_REF.' ?',
+													]). '</li>' . PHP_EOL;
+					},					
+			],
+			'headerOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
+				]
+			],
+			'contentOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'50px',
+					'height'=>'10px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+				]
+			],
 
+		],
            
     ];
 
@@ -476,13 +531,13 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
 		'panel' => [
 					'heading'=>'<h3 class="panel-title">PEMBUKUAN IURAN/STORAN</h3>',
 					//'type'=>'warning',
-					/* 'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Tambah Warga ',
-							['modelClass' => 'Kategori',]),'/dashboard/warga-data-rt/create',[
+					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Tambah Data ',
+							['modelClass' => 'Kategori',]),'/dashboard/pembukuan-harian/create',[
 								'data-toggle'=>"modal",
 								'data-target'=>"#modal-create",
 								'class' => 'btn btn-success'
 													]), 
-					'showFooter'=>false,  */
+					'showFooter'=>false,
 		],
 		'toolbar'=> [
 			//'{items}',
@@ -506,4 +561,75 @@ $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
         </div>
     </div>
 </div>
+<?php
+	$this->registerJs("
+         $('#modal-create').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-create',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">Masukan Data</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
+	
+	
+	$this->registerJs("
+         $('#modal-view').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-view',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">View Data Warga</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
+	
+	$this->registerJs("
+         $('#modal-edit').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title') 
+            var href = button.attr('href') 
+            //modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('<i class=\"fa fa-spinner fa-spin\"></i>')
+            $.post(href)
+                .done(function( data ) {
+                    modal.find('.modal-body').html(data)
+                });
+            })
+    ",$this::POS_READY);
+	 Modal::begin([
+        'id' => 'modal-edit',
+      	'header' => '<div style="float:left;margin-right:10px" class="fa fa-2x fa-book"></div><div><h4 class="modal-title">Edit Data Warga</h4></div>',
+		'headerOptions'=>[								
+				'style'=> 'border-radius:5px; background-color: rgba(0, 95, 218, 0.3)',	
+		],
+    ]);
+    Modal::end();
 
+?>
