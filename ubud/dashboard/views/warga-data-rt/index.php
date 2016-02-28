@@ -11,6 +11,7 @@ use kartik\date\DatePicker;
 use kartik\builder\Form;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
+use kartik\editable\Editable;
 
 use ubud\dashboard\models\Warga_status;
 use ubud\dashboard\models\Rt;
@@ -162,6 +163,7 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 		],
 		[  	//col-5
 			//Status-Kepemilikan Rumah
+			'class'=>'kartik\grid\EditableColumn',
 			'attribute' =>  'RUMAH_STT',
 			'label'=>'Status.Rumah',
 			'value'=>function($model){
@@ -188,9 +190,26 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 					'font-size'=>'9pt',
 				]
 			],
+			'editableOptions' => [
+				'header' => 'Status Kepemilikan',
+				'inputType' => \kartik\editable\Editable::INPUT_SELECT2,
+				'size' => 'md',
+				'options' => [
+					'data' => $sttNm,
+					'pluginOptions' => [
+						//'min'=>0,
+						//'max'=>5000,
+						'allowClear' => true,
+						'class'=>'pull-top dropup'
+					],
+				],
+				//Refresh Display Warga_status::find()->all(), 'ID', 'RUMAH_STATUS'
+				'displayValueConfig' => ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS'),
+			],
 		],
 		[  	//col-6
 			//Jumlah Anggota Keluarga
+			'class'=>'kartik\grid\EditableColumn',
 			'attribute' =>  'JUMLAH_ANGOTA',
 			'label'=>'Anggota Keluarga',
 			'hAlign'=>'left',
@@ -212,9 +231,24 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 					'font-size'=>'9pt',
 				]
 			],
+			'editableOptions' => [
+				'header' => 'Anggota Keluarga',
+				'widgetClass' => Editable::INPUT_WIDGET,	
+				'inputType' => Editable::INPUT_SPIN,				
+				'options' => [
+					//'inputType' => '\kartik\widgets\TouchSpin',
+					'pluginOptions' => [
+						'buttonup_class' => 'btn btn-primary', 
+						'buttondown_class' => 'btn btn-info', 
+						'buttonup_txt' => '<i class="glyphicon glyphicon-plus-sign"></i>', 
+						'buttondown_txt' => '<i class="glyphicon glyphicon-minus-sign"></i>'
+					]
+				],				
+			],
 		],	
 		[  	//col-7
 			//TLP_RUMAH
+			'class'=>'kartik\grid\EditableColumn',
 			'attribute' => 'TLP_RUMAH',
 			'label'=>'Tlp.Rumah',
 			'hAlign'=>'left',
@@ -239,6 +273,7 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 		],
 		[  	//col-8
 			//TLP_KANTOR
+			'class'=>'kartik\grid\EditableColumn',
 			'attribute' =>'TLP_KANTOR',
 			'label'=>'Tlp.Kantor',
 			'hAlign'=>'left',
@@ -263,6 +298,7 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 		],
 		[  	//col-8
 			//TLP_HP
+			'class'=>'kartik\grid\EditableColumn',
 			'attribute' =>'TLP_HP',
 			'label'=>'Handphone',
 			'hAlign'=>'left',

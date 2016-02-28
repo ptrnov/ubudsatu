@@ -66,6 +66,46 @@ class WargaDataRtController extends Controller
     public function actionIndex()
     {
 		if (!Yii::$app->user->isGuest){
+			
+			if (Yii::$app->request->post('hasEditable')) {
+				$idx = Yii::$app->request->post('editableKey');
+				Yii::$app->response->format = Response::FORMAT_JSON;
+				$model = Warga_data::findOne($idx);
+				$out = Json::encode(['output'=>'', 'message'=>'']);
+				$post = [];
+				$posted = current($_POST['Warga_data']);
+				$post['Warga_data'] = $posted;
+				if ($model->load($post)) {
+					$output = '';
+					$model->save();
+						/* RUMAH_STT */
+						if (isset($posted['RUMAH_STT'])) {
+							$output = $model->RUMAH_STT;
+						}
+						/* JUMLAH_ANGOTA */
+						if (isset($posted['JUMLAH_ANGOTA'])) {
+							 $output = Yii::$app->formatter->asInteger($model->JUMLAH_ANGOTA);
+						}
+						/* HTLP_RUMAH */
+						if (isset($posted['TLP_RUMAH'])) {
+							$output = $model->TLP_RUMAH;
+						}
+						/* TLP_KANTOR */
+						if (isset($posted['TLP_KANTOR'])) {
+							$output = $model->TLP_KANTOR;
+						}
+						/* TLP_HP */
+						if (isset($posted['TLP_HP'])) {
+							$output = $model->TLP_HP;
+						}
+
+					$out = Json::encode(['output'=>$output, 'message'=>'']);
+				}
+				// return ajax json encoded response and exit
+				echo $out;
+				return;
+			}
+			
 			$searchModel = new Warga_dataSearch([
 				'RT'=>Yii::$app->user->identity->warga
 			]); 

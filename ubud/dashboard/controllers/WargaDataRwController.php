@@ -65,6 +65,46 @@ class WargaDataRwController extends Controller
      */
     public function actionIndex()
     {
+		
+		if (Yii::$app->request->post('hasEditable')) {
+			$idx = Yii::$app->request->post('editableKey');
+			Yii::$app->response->format = Response::FORMAT_JSON;
+			$model = Warga_data::findOne($idx);
+			$out = Json::encode(['output'=>'', 'message'=>'']);
+			$post = [];
+			$posted = current($_POST['Warga_data']);
+			$post['Warga_data'] = $posted;
+			if ($model->load($post)) {
+				$output = '';
+				$model->save();
+					/* RUMAH_STT */
+					if (isset($posted['RUMAH_STT'])) {
+						$output = $model->RUMAH_STT;
+					}
+					/* JUMLAH_ANGOTA */
+					if (isset($posted['JUMLAH_ANGOTA'])) {
+						 $output = Yii::$app->formatter->asInteger($model->JUMLAH_ANGOTA);
+					}
+					/* HTLP_RUMAH */
+					if (isset($posted['TLP_RUMAH'])) {
+						$output = $model->TLP_RUMAH;
+					}
+					/* TLP_KANTOR */
+					if (isset($posted['TLP_KANTOR'])) {
+						$output = $model->TLP_KANTOR;
+					}
+					/* TLP_HP */
+					if (isset($posted['TLP_HP'])) {
+						$output = $model->TLP_HP;
+					}
+
+				$out = Json::encode(['output'=>$output, 'message'=>'']);
+			}
+			// return ajax json encoded response and exit
+			echo $out;
+			return;
+		}
+		
 		$searchModel = new Warga_dataSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 		
@@ -74,32 +114,7 @@ class WargaDataRwController extends Controller
 		]);
     }
 
-	
-	// public function actionRw($kd)
-    // {
-        // $searchModel = new Warga_dataSearch();
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 		
-        // return $this->render('index', [
-            // 'searchModel' => $searchModel,
-            // 'dataProvider' => $dataProvider,
-        // ]);
-    // }
-	
-	
-	// public function actionRt($kd)
-    // {
-        // $searchModel = new Warga_dataSearch();
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		
-
-        // return $this->render('index', [
-            // 'searchModel' => $searchModel,
-            // 'dataProvider' => $dataProvider,
-        // ]);
-    // } 
-	
-	
     /**
      * Displays a single Warga_data model.
      * @param string $id
