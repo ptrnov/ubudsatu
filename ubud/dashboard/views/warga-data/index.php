@@ -9,10 +9,25 @@ use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
-
+use yii\helpers\Url;
 
 use ubud\dashboard\models\Warga_data;
 use ubud\dashboard\models\Warga_dataSearch;
+
+
+	/* function tmb_create($rt){
+		$title = Yii::t('app', 'create');
+		$options = ['id'=>'barang-prodak',
+					//'data-toggle'=>"modal",
+					'data-target'=>"#check-barang-prodak",
+					'class' => 'btn btn-default btn-sm'
+		];
+		$icon = '<span class="glyphicon glyphicon-search"></span>';
+		$label = $icon . ' ' . $title;
+		$url = Url::toRoute(['/dashboard/warga-data/cari','rt'=>$rt]);
+		$content = Html::a($label,$url, $options);
+		return $content;	 
+	} */
 
 	/*
 	 * COLUMN DATA RT
@@ -66,15 +81,37 @@ use ubud\dashboard\models\Warga_dataSearch;
 			//'expandOneOnly'=>true
 		
 		],
-		[  	//col-1
-			//Nomor RT
-			'attribute' =>'id_rt',
-			'value'=>function(){
-				return 'RUKUN WARGA';
-			},
-			'label'=>'Rukun Tetangga',
-			'hAlign'=>'left',
-			'vAlign'=>'middle',
+		[
+			'class'=>'kartik\grid\ActionColumn',
+			'dropdown' => true,
+			'template' => '{data_rw}{laporan_rw}',
+			'dropdownOptions'=>['class'=>'pull-left dropdown'],
+			'buttons' => [
+					'data_rw' =>function($url, $model, $key){
+							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'Warga RW'.$model->id_rw),
+														['/dashboard/warga-data-rw'],[													
+														'data-title'=> $model->id_rt,
+														]). '</li>' . PHP_EOL;
+					},
+					'laporan_rw' =>function($url, $model, $key){
+							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Review Warga RW' .$model->id_rw),
+														['/dashboard/warga-data-rw/analiz'],[														
+														'data-title'=> $model->id_rt,
+														]). '</li>' . PHP_EOL;					
+					}
+					/* 'data_rt' =>function($url, $model, $key){
+							return  '<li>' .Html::a('<span class="fa fa-eye fa-dm"></span>'.Yii::t('app', 'Warga '.$model->ket_rt),
+														['/dashboard/warga-data-rt/rt','kd'=>$model->id_rt],[													
+														'data-title'=> $model->id_rt,
+														]). '</li>' . PHP_EOL;
+					},
+					'laporan_rt' =>function($url, $model, $key){
+							return  '<li>' . Html::a('<span class="fa fa-edit fa-dm"></span>'.Yii::t('app', 'Review Warga'.$model->ket_rt),
+														['/dashboard/warga-data-rt/analiz','id'=>$model->id_rt],[														
+														'data-title'=> $model->id_rt,
+														]). '</li>' . PHP_EOL;					
+					} */
+			],
 			'headerOptions'=>[
 				'style'=>[
 					'text-align'=>'center',
@@ -88,6 +125,35 @@ use ubud\dashboard\models\Warga_dataSearch;
 				'style'=>[
 					'text-align'=>'center',
 					'width'=>'50px',
+					'height'=>'10px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+				]
+			],
+
+		],
+		[  	//col-1
+			//Nomor RT
+			'attribute' =>'id_rt',
+			'value'=>function($model){
+				return 'RT.0' .$model->id_rt ;
+			},
+			'label'=>'RUKUN WARGA',
+			'hAlign'=>'left',
+			'vAlign'=>'middle',
+			'headerOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'150px',
+					'font-family'=>'tahoma, arial, sans-serif',
+					'font-size'=>'9pt',
+					'background-color'=>'rgba(0, 95, 218, 0.3)',
+				]
+			],
+			'contentOptions'=>[
+				'style'=>[
+					'text-align'=>'center',
+					'width'=>'150px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
 				]
@@ -97,12 +163,15 @@ use ubud\dashboard\models\Warga_dataSearch;
 			//Nama RT
 			'attribute' => 'ket_rt',						
 			'label'=>'Keterangan',
+			'value'=>function($model){
+				return 'RUKUN TETANGGA ' .$model->ket_rt ;
+			},
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
 				'style'=>[
 					'text-align'=>'center',
-					'width'=>'150px',
+					'width'=>'350px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
 					'background-color'=>'rgba(0, 95, 218, 0.3)',
@@ -111,19 +180,20 @@ use ubud\dashboard\models\Warga_dataSearch;
 			'contentOptions'=>[
 				'style'=>[
 					'text-align'=>'left',
-					'width'=>'150px',
+					'width'=>'350px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
 				]
 			],
-		],		
+		],
+				
 	];
 
 	$dataRt=GridView::widget([
 		'id'=>'gv-rt-warga',
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
-		//'filterRowOptions'=>['style'=>'background-color:rgba(0, 95, 218, 0.3); align:center'],
+        'filterModel' => $searchModel,
+		'filterRowOptions'=>['style'=>'background-color:rgba(0, 95, 218, 0.3); align:center'],
 		'showPageSummary' => true,
 		'columns' =>$clmRt,
 		'pjax'=>true,
@@ -133,20 +203,15 @@ use ubud\dashboard\models\Warga_dataSearch;
 			'id'=>'gv-rt-warga',
 		   ],
 		],
-		'panel' => [
-					'heading'=>'<h3 class="panel-title">DATA WARGA</h3>',
-					'type'=>'warning',
-					'before'=> Html::a('<i class="glyphicon glyphicon-plus"></i> '.Yii::t('app', 'Add KK',
-							['modelClass' => 'Data-warga',]),'/dashboard/warga-data/create',[
-								'data-toggle'=>"modal",
-									'data-target'=>"#modal-create",
-										'class' => 'btn btn-success'
-													]), 
-					'showFooter'=>false,
-		],
-		'toolbar'=> [
-			//'{items}',
-		], 
+		/* 'toolbar'=> [
+			['content'=>tmb_create()],
+			//'{export}',
+			//'{toggleData}',
+		], */
+		/* 'panel'=>[
+				//'type'=>GridView::TYPE_INFO,
+				'heading'=>"<span class='fa fa-shopping-cart fa-xs'><b> LIST PURCHASE ORDER</b></span>",
+			], */
 		'hover'=>true, //cursor select
 		'responsive'=>true,
 		'responsiveWrap'=>true,

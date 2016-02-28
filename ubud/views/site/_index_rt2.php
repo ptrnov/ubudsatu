@@ -69,14 +69,14 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 										 * Modul Customer - Stock Gudang | Input Confirmasi pembayaran customer customer || Attach upload -> bukti pembayaran
 										*/
 										'content' => 'DATA WARGA',
-										'url' => '/dashboard/warga-data',
+										'url' => '/dashboard/warga-data-rt',
 										'badge' => '0'
 									],
 									[
 										/* 
 										 * Modul Customer - Stock Penjualan | input Penjualan langsung dari Customer
 										*/
-										'content' => 'DAFTAR WARGA',
+										'content' => 'DATA IURAN',
 										'url' => '/dashboard/maintenance',
 										'badge' => '0'
 									],

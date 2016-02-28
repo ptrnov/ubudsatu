@@ -3,13 +3,42 @@
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
-use app\models\hrd\Dept;
 use kartik\grid\GridView;
 use kartik\widgets\ActiveForm;
 use kartik\tabs\TabsX;
 use kartik\date\DatePicker;
 use kartik\builder\Form;
+use yii\helpers\Url;
+use yii\web\View;
+	
+	
+	/* function tmb_create(){
+		$title = Yii::t('app', 'create');
+		$options = ['id'=>'barang-prodak',
+					'data-toggle'=>"modal",
+					'data-target'=>"#check-barang-prodak",
+					'class' => 'btn btn-default btn-sm'
+		];
+		$icon = '<span class="glyphicon glyphicon-search"></span>';
+		$label = $icon . ' ' . $title;
+		$url = Url::toRoute(['#']);
+		$content = Html::a($label,$url, $options);
+		return $content;	 
+	} */
 
+	/* function tombolCari(){
+		$title = Yii::t('app', 'Barang Umum');
+		$options = ['id'=>'barang-umum',
+					'data-toggle'=>"modal",
+					'data-target'=>"#check-barang-umum",
+					'class' => 'btn btn-default btn-sm'
+		];
+		$icon = '<span class="glyphicon glyphicon-search"></span>';
+		$label = $icon . ' ' . $title;
+		$url = Url::toRoute(['#']);
+		$content = Html::a($label,$url, $options);
+		return $content;		 
+	} */
 
 	/*
 	 * COLUMN DATA Warga
@@ -45,35 +74,11 @@ use kartik\builder\Form;
 						'border-right'=>'0px',
 				]
 			]
-		],
-		[  	//col-1
-			//Nomor RT
-			'attribute' =>'RT',						
-			'label'=>'Rukun Tetangga',
-			'hAlign'=>'left',
-			'vAlign'=>'middle',
-			'headerOptions'=>[
-				'style'=>[
-					'text-align'=>'center',
-					'width'=>'50px',
-					'font-family'=>'tahoma, arial, sans-serif',
-					'font-size'=>'9pt',
-					'background-color'=>'rgba(97, 211, 96, 0.3)',
-				]
-			],
-			'contentOptions'=>[
-				'style'=>[
-					'text-align'=>'center',
-					'width'=>'50px',
-					'font-family'=>'tahoma, arial, sans-serif',
-					'font-size'=>'9pt',
-				]
-			],
-		],
-		[  	//col-2
+		],		
+		[  	//col-q
 			//Nama Kepala Keluarga
 			'attribute' => 'KK_NM',						
-			'label'=>'Nama',
+			'label'=>'Nama.KK',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -97,7 +102,7 @@ use kartik\builder\Form;
 		[  	//col-3
 			//Block Rumah
 			'attribute' => 'RUMAH_BLOCK',
-			'label'=>'Employee-Name',
+			'label'=>'Block',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -111,7 +116,7 @@ use kartik\builder\Form;
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'left',
+					'text-align'=>'center',
 					'width'=>'80px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -121,7 +126,7 @@ use kartik\builder\Form;
 		[  	//col-4
 			//No Rumah
 			'attribute' => 'RUMAH_NO',
-			'label'=>'Employee-Name',
+			'label'=>'No.Rumah',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -144,8 +149,8 @@ use kartik\builder\Form;
 		],
 		[  	//col-5
 			//Status-Kepemilikan Rumah
-			'attribute' =>  'RUMAH_STT',
-			'label'=>'Status-Kepemilikan',
+			'attribute' =>  'Sttnm',
+			'label'=>'Status.Rumah',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -169,7 +174,7 @@ use kartik\builder\Form;
 		[  	//col-6
 			//Jumlah Anggota Keluarga
 			'attribute' =>  'JUMLAH_ANGOTA',
-			'label'=>'Anggota Keluarga',
+			'label'=>'Anggota.Keluarga',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -183,7 +188,7 @@ use kartik\builder\Form;
 			],
 			'contentOptions'=>[
 				'style'=>[
-					'text-align'=>'left',
+					'text-align'=>'center',
 					'width'=>'30px',
 					'font-family'=>'tahoma, arial, sans-serif',
 					'font-size'=>'9pt',
@@ -193,7 +198,7 @@ use kartik\builder\Form;
 		[  	//col-7
 			//TLP_RUMAH
 			'attribute' => 'TLP_RUMAH',
-			'label'=>'Tlp-Rumah',
+			'label'=>'Tlp.Rumah',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -217,7 +222,7 @@ use kartik\builder\Form;
 		[  	//col-8
 			//TLP_KANTOR
 			'attribute' =>'TLP_KANTOR',
-			'label'=>'Tlp-Kantor',
+			'label'=>'Tlp.Kantor',
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
 			'headerOptions'=>[
@@ -267,7 +272,7 @@ use kartik\builder\Form;
 	$dataWarga=GridView::widget([
 		'id'=>'gv-data-warga',
         'dataProvider' => $dataProviderWarga,
-        'filterModel' => $searchModelWarga,
+        //'filterModel' => $searchModelWarga,
 		'filterRowOptions'=>['style'=>'background-color:rgba(97, 211, 96, 0.3); align:center'],
 		'showPageSummary' => true,
 		'columns' =>$clmWarga,
