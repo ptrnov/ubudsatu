@@ -21,7 +21,7 @@ AppAsset_front::register($this);
 						$menuItemsNoLogin[] = ['label' =>'', 'url' => ['#']];						
 						$menuItemsNoLogin[] = ['label' =>'Home', 'url' => ['/site/index']];						
 						$menuItemsNoLogin[] = ['label' => 'Struktur', 'url' => ['/front/struktur/index']];
-						$menuItemsNoLogin[] = ['label' => 'Reporting', 'url' => ['/front/report/index']];
+						$menuItemsNoLogin[] = ['label' => 'Reporting', 'url' => ['/front/report/index?id=11']];
 						$menuItemsNoLogin[] = ['label' => 'Galery', 'url' => ['/front/galeri/index']];
 						$menuItemsNoLogin[] = ['label' => 'Contact Us', 'url' => ['/front/contact/index']];
 						$menuItemsNoLogin[] = ['label' => '<div class="btn">LOGIN</div>', 'url' => ['/site/login'],];

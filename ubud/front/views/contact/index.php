@@ -15,8 +15,8 @@ $this->title = 'contact-ubudsatu.com';
 							 echo Html::well(Html::address(
 							'DUTA BINTARO, Cluster Ubud Satu',
 							 ['Kelurahan Kunciran, Kecamatan Pinang','Tangerang.'],
-							 ['Tel ' => '(021) 3044-85-98/99'],
-							 ['Fax ' => '(021) 3044 85 97'],
+							 ['Tel ' => '(021) '],
+							 ['Fax ' => '(021) '],
 							 ['Website : ' => 'www.ubudsatu.com', 'Email' => 'ubudsatu@gmail.com']
 							), Html::SIZE_TINY); 
 						?>		
