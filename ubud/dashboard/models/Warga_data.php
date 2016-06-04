@@ -55,8 +55,33 @@ class Warga_data extends \yii\db\ActiveRecord
 		return $this->sttrumah->RUMAH_STATUS;
 	}
 	
+	public function getRt1_Cntkk(){
+		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=1')->count();	 
+		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+		 return $cnt;
+	}
 	
+	public function getRt2_Cntkk(){
+		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=2')->count();	 
+		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+		 return $cnt;
+	}
 	
+	public function getRt3_Cntkk(){
+		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=3')->count();	 
+		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+		 return $cnt;
+	}
+	
+	public function getRt4_Cntkk(){
+		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=4')->count();	 
+		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+		 return $cnt;
+	}
     /**
      * @inheritdoc
      */
