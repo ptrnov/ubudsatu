@@ -29,9 +29,10 @@ $idData=$id=='11'? 'RW.'.$id: 'RT'.'.0'.$id;
 				</div><!-- /.box-header -->
 				<div class="box-body">
 					<!-- Conversations are loaded here -->
-					<div class="direct-chat-messages" style="font-family:tahoma, arial, sans-serif;font-size:9pt">
+					<div class="direct-chat-messages" style="height:800px;font-family:tahoma, arial, sans-serif;font-size:9pt">
 						<!-- Message. Default to the left -->
-							 <div class="raw" style="min-height:70px;">
+							 <!--<div class="raw" style="min-height:70px;max-height:auto">!-->
+							 <div class="raw" style="min-height:70px;max-height:auto">
 								<?php
 									//print_r($dpDataProvider);
 									$rptDatawarga=$this->render('_rptDatawarga',[
@@ -45,23 +46,18 @@ $idData=$id=='11'? 'RW.'.$id: 'RT'.'.0'.$id;
 						<!-- Message to the right -->
 					</div><!--/.direct-chat-messages-->
 					<!-- Contacts are loaded here -->
-					<div class="direct-chat-contacts" style="color:black;background-color:white;font-family:tahoma, arial, sans-serif;font-size:9pt">
+					<div class="direct-chat-contacts" style="height:800px;color:black;background-color:white;font-family:tahoma, arial, sans-serif;font-size:9pt">
 						<ul class="contacts-list">
 							<li>
 								<div class="raw">
 									<?php
-										//print_r($dpDataProvider);
 										$infoDatawarga=$this->render('_infoDatawarga',[
 											'idData'=>$idData,
 											'id'=>$id,
 											'model'=>$model,
-											//'cntkk'=>$cntkk,
-											'dpDataProvider'=>$dpDataProvider
 										]);
 									?>
-									<?=$infoDatawarga?>	
-										
-									
+									<?=$infoDatawarga?>										
 								</div>
 							</li><!-- End Contact Item -->
 						</ul><!-- /.contatcts-list -->
@@ -86,7 +82,7 @@ $idData=$id=='11'? 'RW.'.$id: 'RT'.'.0'.$id;
 					<div class="direct-chat-messages" style="height:100%;font-family:tahoma, arial, sans-serif;font-size:9pt">
 						<!-- Message. Default to the left -->
 							 <div class="raw">
-								asda asd asdas d asd a d asd as d asd as das d as das da sd asd as da sd asd as 
+								ON PROGRESS NEXT
 							</div>
 						<!-- Message to the right -->
 					</div><!--/.direct-chat-messages-->
@@ -95,7 +91,7 @@ $idData=$id=='11'? 'RW.'.$id: 'RT'.'.0'.$id;
 						<ul class="contacts-list">
 							<li>
 								<div class="raw">
-								asd
+									<!-- INSIDE ANALIZE !-->
 								</div>
 							</li><!-- End Contact Item -->
 						</ul><!-- /.contatcts-list -->

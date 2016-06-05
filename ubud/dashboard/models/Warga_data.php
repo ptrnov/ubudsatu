@@ -55,33 +55,103 @@ class Warga_data extends \yii\db\ActiveRecord
 		return $this->sttrumah->RUMAH_STATUS;
 	}
 	
+	
+	/*JUMLAH CDATA KK */
+	//RT
 	public function getRt1_Cntkk(){
-		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
 		 $cnt=$this->find()->where('STATUS<>3 AND RT=1')->count();	 
-		// $cnt=$this->find()->where('STATUS<>3')->count();	 
 		 return $cnt;
-	}
-	
+	}	
 	public function getRt2_Cntkk(){
-		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
 		 $cnt=$this->find()->where('STATUS<>3 AND RT=2')->count();	 
-		// $cnt=$this->find()->where('STATUS<>3')->count();	 
 		 return $cnt;
-	}
-	
+	}	
 	public function getRt3_Cntkk(){
-		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
 		 $cnt=$this->find()->where('STATUS<>3 AND RT=3')->count();	 
-		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+		 return $cnt;
+	}	
+	public function getRt4_Cntkk(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=4')->count();	 
+		 return $cnt;
+	}
+	//RW
+	public function getRw_Cntkk(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RW=11')->count();	 
 		 return $cnt;
 	}
 	
-	public function getRt4_Cntkk(){
-		 //$cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
-		 $cnt=$this->find()->where('STATUS<>3 AND RT=4')->count();	 
-		// $cnt=$this->find()->where('STATUS<>3')->count();	 
+	/*JUMLAH STATUS RUMAH - MILIK */
+	//RT
+	public function getRt1_Cntrumah_milik(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=1')->count();	 
+		 return $cnt;
+	}	
+	public function getRt2_Cntrumah_milik(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=2 AND RUMAH_STT=1')->count();	 
+		 return $cnt;
+	}	
+	public function getRt3_Cntrumah_milik(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=3 AND RUMAH_STT=1')->count();	 
 		 return $cnt;
 	}
+	public function getRt4_Cntrumah_milik(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=4 AND RUMAH_STT=1')->count();	 
+		 return $cnt;
+	}
+	//RW
+	public function getRw_Cntrumah_milik(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RW=11 AND RUMAH_STT=1')->count();	 
+		 return $cnt;
+	}
+	
+	/*JUMLAH STATUS RUMAH - KONTRAK */
+	//RT
+	public function getRt1_Cntrumah_kontrak(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=2')->count();	 
+		 return $cnt;
+	}	
+	public function getRt2_Cntrumah_kontrak(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=2 AND RUMAH_STT=2')->count();	 
+		 return $cnt;
+	}	
+	public function getRt3_Cntrumah_kontrak(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=3 AND RUMAH_STT=2')->count();	 
+		 return $cnt;
+	}
+	public function getRt4_Cntrumah_kontrak(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=4 AND RUMAH_STT=2')->count();	 
+		 return $cnt;
+	}
+	//RW
+	public function getRw_Cntrumah_kontrak(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RW=11 AND RUMAH_STT=2')->count();	 
+		 return $cnt;
+	}
+	
+	/*JUMLAH STATUS RUMAH - KOSONG */
+	//RT
+	public function getRt1_Cntrumah_kosong(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=1 AND RUMAH_STT=3')->count();	 
+		 return $cnt;
+	}	
+	public function getRt2_Cntrumah_kosong(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=2 AND RUMAH_STT=3')->count();	 
+		 return $cnt;
+	}	
+	public function getRt3_Cntrumah_kosong(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=3 AND RUMAH_STT=3')->count();	 
+		 return $cnt;
+	}
+	public function getRt4_Cntrumah_kosong(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RT=4 AND RUMAH_STT=3')->count();	 
+		 return $cnt;
+	}
+	//RW
+	public function getRw_Cntrumah_kosong(){
+		 $cnt=$this->find()->where('STATUS<>3 AND RW=11 AND RUMAH_STT=3')->count();	 
+		 return $cnt;
+	}
+	
     /**
      * @inheritdoc
      */

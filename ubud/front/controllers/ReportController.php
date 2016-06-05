@@ -29,19 +29,31 @@ class ReportController extends Controller
 	public function actionIndex($id){
 		
 		$searchModel = new Warga_dataSearch();
-		$dpDataProvider = $searchModel->searchDataWarga(Yii::$app->request->queryParams,$id);		
-		$model = Warga_data::find()->where('STATUS<>3 AND RT='.$id)->one();
-		//$cntkk1 = Warga_data::find()->where('STATUS<>3 AND RT='.$id)->count();
-		//$cntSttRumah = Warga_data::find()->where('STATUS<>3 AND RT='.$id.' AND RUMAH_STT=1')->count();
-		//$cntkk = array_merge(['cntkk1'=>$cntkk1],['cntRumah'=>$cntSttRumah]);
-		//$cntkk=new $cntkk12;//array_merge(['cntkk1'=>$cntkk1],['cntRumah'=>$cntSttRumah]);
-		return $this->render('index', [
-		'id'=>$id,
-		'model'=>$model,
-		//'cntkk'=>$cntkk,
-		'searchModel' => $searchModel,
-		'dpDataProvider' => $dpDataProvider,
-		]);
+		
+		if ($id==11){
+			//RW
+			$modelRslt = Warga_data::find()->where('STATUS<>3 AND RW='.$id)->one();		
+			$model=$modelRslt!=''?$modelRslt:'0';
+			$dpDataProvider = $searchModel->searchDataWargaRW(Yii::$app->request->queryParams,$id);		
+		}else{
+			//RT
+			$modelRslt = Warga_data::find()->where('STATUS<>3 AND RT='.$id)->one();
+			$model=$modelRslt!=''?$modelRslt:'0';
+			$dpDataProvider = $searchModel->searchDataWargaRT(Yii::$app->request->queryParams,$id);		
+		}
+		
+		
+		if ($id==1 or $id==2 or $id==3  or $id==4 or $id==11){
+			return $this->render('index', [
+			'id'=>$id,
+			'model'=>$model,
+			//'cntkk'=>$cntkk,
+			'searchModel' => $searchModel,
+			'dpDataProvider' => $dpDataProvider,
+			]);
+		}else{
+			/*NO DATA*/
+			return $this->render('indexNoData');
+		}
 	}
-	
 }

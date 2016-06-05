@@ -105,9 +105,41 @@ class Warga_dataSearch extends Warga_data
         return $dataProvider;
     }
 	
-	public function searchDataWarga($params,$id)
+	public function searchDataWargaRT($params,$id)
     {
         $query = Warga_data::find()->where('STATUS<>3 AND RT='.$id)->orderBy(['RUMAH_NO'=>'SORT_ASC']);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'ID' => $this->ID,
+            'RUMAH_NO' => $this->RUMAH_NO,
+            'RUMAH_STT' => $this->RUMAH_STT,
+            'JUMLAH_ANGOTA' => $this->JUMLAH_ANGOTA,
+        ]);
+
+        $query->andFilterWhere(['like', 'RT', $this->RT])
+            ->andFilterWhere(['like', 'KK_NM', $this->KK_NM])
+            ->andFilterWhere(['like', 'RUMAH_BLOCK', $this->RUMAH_BLOCK])
+            ->andFilterWhere(['like', 'TLP_RUMAH', $this->TLP_RUMAH])
+            ->andFilterWhere(['like', 'TLP_KANTOR', $this->TLP_KANTOR])
+            ->andFilterWhere(['like', 'TLP_HP', $this->TLP_HP]);
+
+        return $dataProvider;
+    }
+	public function searchDataWargaRW($params,$id)
+    {
+        $query = Warga_data::find()->where('STATUS<>3 AND RW='.$id)->orderBy(['RT'=>'SORT_ASC','RUMAH_NO'=>'SORT_ASC']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
