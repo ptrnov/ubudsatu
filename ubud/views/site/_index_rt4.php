@@ -57,37 +57,10 @@ $EmpDashboard=$this->render('login_index/_dashboard', [
 							'heading' => '<b>DATA PROSESS</b>',
 							'postBody' => Html::listGroup([
 									[
-										/* 
-										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian Under report Sales promotion
-										*/
-										'content' => 'laporan Harian',
-										'url' => '/dashboard/pembukuan-harian',
+										'content' => 'DATA WARGA',
+										'url' => '/dashboard/warga-data-rt',
 										'badge' => '0'
-									],	
-									[
-										/* 
-										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang harian di customer under report Sales promotion
-										*/
-										'content' => 'laporan Bulanan',
-										'url' => '/dashboard/pembukuan-bulanan',
-										'badge' => '0'
-									],
-									[
-										/* 
-										 * Modul Salesman - Sales Promotion  | Reporting total penjualan(normal/promo) harian bulanan report Sales promotion
-										*/
-										'content' => 'Rekap Tahunan',
-										'url' => '/dashboard/pembukuan-tahunan',
-										'badge' => '0'
-									],	
-									[
-										/* 
-										 * Modul Salesman - Sales Promotion  | Reporting total Stock (normal/promo) gudang bulanan di customer under report Sales promotion
-										*/
-										'content' => 'Tutup Buku',
-										'url' => '/dashboard/maintenance',
-										'badge' => '0'
-									],										
+									],									
 								]),
 						],
 						Html::TYPE_INFO
