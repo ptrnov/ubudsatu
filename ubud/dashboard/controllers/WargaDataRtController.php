@@ -65,6 +65,14 @@ class WargaDataRtController extends Controller
      */
     public function actionIndex()
     {
+		
+		/* $paramCari=Yii::$app->getRequest()->getQueryParam('id');
+		if ($paramCari!=''){
+			$cari=['KK_NM'=>$paramCari];			
+		}else{
+			$cari='';			
+		}; */
+		
 		if (!Yii::$app->user->isGuest){
 			
 			if (Yii::$app->request->post('hasEditable')) {

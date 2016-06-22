@@ -23,7 +23,7 @@ $idData=$id=='11'? 'RW.'.$id: 'RT'.'.0'.$id;
 					<div class="box-tools pull-left">
 						<!--<span data-toggle="tooltip" title="3 New Messages" class="badge bg-green">3</span>-->
 						<button data-toggle="tooltip" title="show/hide" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button data-toggle="tooltip" title="Calendar" data-widget="chat-pane-toggle"><i class="fa fa-info"></i></button>
+						<button data-toggle="tooltip" title="Summary" data-widget="chat-pane-toggle"><i class="fa fa-info"></i></button>
 						<!-- <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
 					</div>
 				</div><!-- /.box-header -->
