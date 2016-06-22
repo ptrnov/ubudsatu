@@ -45,6 +45,9 @@ class Warga_dataSearch extends Warga_data
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+			'pagination'=>[
+				'pageSize'=>100,
+			]
         ]);
 
         $this->load($params);
@@ -78,6 +81,9 @@ class Warga_dataSearch extends Warga_data
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+			'pagination'=>[
+				'pageSize'=>100,
+			]
         ]);
 
         $this->load($params);
@@ -111,6 +117,9 @@ class Warga_dataSearch extends Warga_data
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+			'pagination'=>[
+				'pageSize'=>100,
+			]
         ]);
 
         $this->load($params);
@@ -143,6 +152,9 @@ class Warga_dataSearch extends Warga_data
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+			'pagination'=>[
+				'pageSize'=>200,
+			]
         ]);
 
         $this->load($params);

@@ -16,7 +16,7 @@ use ubud\dashboard\models\Rt;
 use ubud\dashboard\models\Warga_block;
 $sttNm = ArrayHelper::map(Warga_status::find()->all(), 'ID', 'RUMAH_STATUS');
 $dataRt = ArrayHelper::map(Rt::find()->all(), 'id_rt', 'ket_rt');
-$dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'ID', 'RUMAH_BLOCK');
+$dataBlock1 = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_BLOCK');
 
 	/* $aryBlok= [
 		  ['RUMAH_BLOCK' => 1, 'DESCRIP' => 'G1'],		  
@@ -69,7 +69,7 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'ID', 'RUMAH_BLOCK');
 			?>			
 		</div>
 		<div style=" width:50%">
-			<?= $form->field($model, 'RUMAH_BLOCK')->dropDownList($dataBlock,['id'=>'data-warga-block']); ?>
+			<?= $form->field($model, 'RUMAH_BLOCK')->dropDownList($dataBlock1,['id'=>'data-warga-block-id']); ?>
 		</div>
 	</div>
 	<?= $form->field($model, 'RUMAH_STT')->dropDownList($sttNm,['id'=>'data-warga-rumastatus']); ?>

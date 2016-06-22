@@ -40,7 +40,7 @@ class Warga_data extends \yii\db\ActiveRecord
             [['SENSUS_FIX','ID','STATUS','RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
             [['RW','RT'], 'string', 'max' => 10],
             [['KK_NM'], 'string', 'max' => 100],
-            [['RUMAH_BLOCK'], 'string', 'max' => 50],
+            [['RUMAH_BLOCK'], 'string'],
             [['TLP_RUMAH', 'TLP_HP'], 'string', 'max' => 20],
             [['TLP_KANTOR'], 'string', 'max' => 30],
 			[['PHOTO','CREATED_BY','UPDATED_BY','CREATED_AT','UPDATED_TIME'], 'safe']
