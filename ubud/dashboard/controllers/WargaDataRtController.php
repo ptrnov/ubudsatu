@@ -161,9 +161,13 @@ class WargaDataRtController extends Controller
     {
 		if (!Yii::$app->user->isGuest){
 			$model = new Warga_data();
-			if($model->load(Yii::$app->request->post())){                  
+			if($model->load(Yii::$app->request->post())){
+						$hsl = \Yii::$app->request->post();
+						$kdNoInt= $hsl['Warga_data']['noInt'];
+						$kdNoAlfa = $hsl['Warga_data']['noAlfa'];
 						$model->CREATED_BY = Yii::$app->user->identity->username;
 						$model->CREATED_AT = date('Y-m-d H:i:s');
+						$model->RUMAH_NO =$kdNoInt.strtoupper($kdNoAlfa);
 						$model->save();                    
 	
 				return $this->redirect(['index']);						
@@ -184,7 +188,14 @@ class WargaDataRtController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+				$hsl = \Yii::$app->request->post();
+						$kdNoInt= $hsl['Warga_data']['noInt'];
+						$kdNoAlfa = $hsl['Warga_data']['noAlfa'];
+						$model->CREATED_BY = Yii::$app->user->identity->username;
+						$model->CREATED_AT = date('Y-m-d H:i:s');
+						$model->RUMAH_NO =$kdNoInt.strtoupper($kdNoAlfa);
+						$model->save();        
            return $this->redirect(['index']);
         } else {
             return $this->renderAjax('edit', [

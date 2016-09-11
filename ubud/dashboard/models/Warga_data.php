@@ -23,6 +23,8 @@ class Warga_data extends \yii\db\ActiveRecord
 {
 	
 	public $rw_disply;
+	public $noInt;
+	public $noAlfa;
     /**
      * @inheritdoc
      */
@@ -37,8 +39,8 @@ class Warga_data extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['SENSUS_FIX','ID','STATUS','RUMAH_NO', 'RUMAH_STT', 'JUMLAH_ANGOTA'], 'integer'],
-            [['RW','RT'], 'string', 'max' => 10],
+            [['SENSUS_FIX','ID','STATUS', 'RUMAH_STT','JUMLAH_ANGOTA','noInt'], 'integer'],
+            [['RW','RT','RUMAH_NO','noAlfa'], 'string', 'max' => 10],
             [['KK_NM'], 'string', 'max' => 100],
             [['RUMAH_BLOCK'], 'string'],
             [['TLP_RUMAH', 'TLP_HP'], 'string', 'max' => 20],

@@ -10,7 +10,7 @@ use yii\web\Request;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
-
+use ptrnov\postman4excel\Cronjob;
 use ubud\dashboard\models\Pembukuan;
 use ubud\dashboard\models\PembukuanSearch;
 use ubud\dashboard\models\Pembukuan_child;
@@ -64,6 +64,7 @@ class PembukuanHarianController extends Controller
      */
     public function actionIndex()
     {
+		echo \ptrnov\postman4excel\Cronjob::world();
 		if (!Yii::$app->user->isGuest)  {
 			$searchModel = new PembukuanSearch([
 				'SRC'=>Yii::$app->user->identity->warga

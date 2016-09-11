@@ -55,8 +55,11 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 	 <?= $form->field($model, 'RT')->hiddenInput(['value'=>Yii::$app->user->identity->warga,'readonly'=>true])->label(false) ?>
      <?= $form->field($model, 'KK_NM')->textInput(['maxlength' => true]) ?>
 	<div>
-		<div style="float:right; width:50%">
-			<?= $form->field($model, 'RUMAH_NO')->widget(TouchSpin::classname(), [
+		<div style="float:right; width:25%">
+		  <?= $form->field($model, 'noAlfa')->textInput(['maxlength' => true]) ?>
+		</div>
+		<div style="float:right; width:25%">
+			<?= $form->field($model, 'noInt')->widget(TouchSpin::classname(), [
 					'name' => 't4',
 					'options' => ['placeholder' => 'No Rumah ...'],			
 					'pluginOptions' => [
@@ -67,7 +70,7 @@ $dataBlock = ArrayHelper::map(Warga_block::find()->all(), 'RUMAH_BLOCK', 'RUMAH_
 					]
 				])
 			?>			
-		</div>
+		</div>		
 		<div style=" width:50%">
 			<?= $form->field($model, 'RUMAH_BLOCK')->dropDownList($dataBlock,['id'=>'data-warga-block']); ?>
 		</div>
